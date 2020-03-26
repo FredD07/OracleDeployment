@@ -1,0 +1,89 @@
+{
+  "input_datatypes": [],
+  "output_datatype": "content_template_output",
+  "input_groups": [
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
+    },
+    {
+      "name": "DatabaseDetails",
+      "label": "Database Details"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "vm_ip_address",
+      "type": "string",
+      "description": "IP Address of the server to connect",
+      "hidden": false,
+      "label": "AIX LPAR IP address",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name":  "image_id_username",
+      "type": "string",
+      "description": "The username to SSH into AIX LPAR",
+      "hidden": false,
+      "label": "Username to SSH",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name":  "image_id_password",
+      "type": "password",
+      "description": "The password of the username to SSH into AIX LPAR",
+      "hidden": false,
+      "label": "User Password to SSH",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name":  "db_sid",
+      "type": "string",
+      "description": "Oracle Database SID",
+      "hidden": false,
+      "label": "Oracle Database SID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "DatabaseDetails"
+    },
+    {
+      "name":  "ora_sys_password",
+      "type": "string",
+      "description": "set same password for all Database Users (SYS, SYSTEM, DBSNMP ...)",
+      "hidden": false,
+      "label": "Database Users Password (SYS, SYSTEM, DBSNMP ...)",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "DatabaseDetails"
+    },
+     {
+      "name":  "asm_sys_password",
+      "type": "string",
+      "description": "provide same password for ASM Instance",
+      "hidden": false,
+      "label": "ASM Instance Sys Password",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "DatabaseDetails"
+    }
+
+    ]
+}
