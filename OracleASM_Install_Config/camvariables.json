@@ -1,0 +1,166 @@
+{
+  "input_datatypes": [],
+  "output_datatype": "content_template_output",
+  "input_groups": [
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
+    },
+    {
+      "name": "ASMDetails",
+      "label": "Oracle ASM Details"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+      {
+      "name":  "openstack_image_id",
+      "type": "string",
+      "description": "The ID of the image to be used for deploy operations.",
+      "hidden": false,
+      "label": "Openstack Image ID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_name",
+      "type": "string",
+      "description": "VM Name",
+      "hidden": false,
+      "label": "AIX LPAR Name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_ip_address",
+      "type": "string",
+      "description": "IP Address of the server to connect",
+      "hidden": false,
+      "label": "AIX LPAR IP address",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name":  "image_id_username",
+      "type": "string",
+      "description": "The username to SSH into AIX LPAR",
+      "hidden": false,
+      "label": "Username to SSH",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name":  "image_id_password",
+      "type": "password",
+      "description": "The password of the username to SSH into AIX LPAR",
+      "hidden": false,
+      "label": "User Password to SSH",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+      {
+     "name":    "asm_version",
+     "type": "string",
+     "label": "Database Version",
+     "description": "Database Version to Install on AIX LPAR",
+     "hidden": false,
+     "secured": false,
+     "required": true,
+     "immutable": false,
+     "group_name": "ASMDetails",
+      "options": [ 
+    {    
+      "value": "19c",
+      "label": "19c",
+      "default": "true" 
+     },  
+     {    
+      "value": "18c",  
+      "label": "18c"  
+     }
+    ] 
+    },
+    {
+      "name":  "asm_home",
+      "type": "string",
+      "description": "Oracle Home Path to Install Oracle GridInfrastructure/ASM Binaries",
+      "hidden": false,
+      "label": "ASM Oracle HOME Path",
+      "default": "/u01/oracle/db_version/grid",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_password",
+      "type": "string",
+      "description": "ASM Instance Password",
+      "hidden": false,
+      "label": "ASM Instance Password",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_data_dg_disk",
+      "type": "string",
+      "description": "Number of ASM Data Diskgroup ",
+      "hidden": false,
+      "label": "Number of ASM Data Diskgroup",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_data_dg_size",
+      "type": "string",
+      "description": "Size of ASM Data Diskgroup ",
+      "hidden": false,
+      "label": "Size of ASM Data Diskgroup (GB)",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+     {
+      "name":  "asm_reco_dg_disk",
+      "type": "string",
+      "description": "Number of ASM Reco Diskgroup ",
+      "hidden": false,
+      "label": "Number of ASM RECO Diskgroup",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_reco_dg_size",
+      "type": "string",
+      "description": "Size of ASM RECO Diskgroup ",
+      "hidden": false,
+      "label": "Size of ASM RECO Diskgroup (GB)",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    }
+    ]
+}
