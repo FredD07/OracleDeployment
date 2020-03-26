@@ -1,0 +1,100 @@
+{
+  "input_datatypes": [],
+  "output_datatype": "content_template_output",
+  "input_groups": [
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
+    },
+    {
+      "name": "DatabaseDetails",
+      "label": "Database Details"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "vm_ip_address",
+      "type": "string",
+      "description": "IP Address of the server to connect",
+      "hidden": false,
+      "label": "AIX LPAR IP address",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name":  "image_id_username",
+      "type": "string",
+      "description": "The username to SSH into AIX LPAR",
+      "hidden": false,
+      "label": "Username to SSH",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name":  "image_id_password",
+      "type": "password",
+      "description": "The password of the username to SSH into AIX LPAR",
+      "hidden": false,
+      "label": "User Password to SSH",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+     "name":    "db_version",
+     "type": "string",
+     "label": "Database Version",
+     "description": "Database Version to Install on AIX LPAR",
+     "hidden": false,
+     "secured": false,
+     "required": true,
+     "immutable": false,
+     "group_name": "DatabaseDetails",
+      "options": [ 
+    {    
+      "value": "19c",
+      "label": "19c",
+      "default": "true" 
+     },  
+     {    
+      "value": "18c",  
+      "label": "18c"  
+     }
+    ] 
+    },
+    {
+      "name":  "OracleHome",
+      "type": "string",
+      "description": "Oracle Home Path to Install Oracle Database Binaries",
+      "hidden": false,
+      "label": "Database Oracle HOME Path",
+      "default": "/u01/oracle/db_version/db_home",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "DatabaseDetails"
+    }
+    ],
+  "template_output_params": [
+   {
+      "name": "os-user-name",
+      "label": "Operating system user name",
+      "description": "user name to connect to the virtual machine",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    }
+ ]
+}
