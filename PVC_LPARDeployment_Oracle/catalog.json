@@ -1,0 +1,79 @@
+{
+   "name": "IBM PowerVC Single Virtual Machine Example",
+   "description": "IBM PowerVC Example to instantiate virtual machine.",
+   "version": "1.0",
+   "imageUrl": "./assets/svg/IBM_WebSphere_Standalone.svg",
+   "image": "tp_WAS_standalone.png",
+   "type": "prebuilt",
+   "status": "active",
+   "manifest": {
+     "template_type": "Terraform",
+     "template_format": "HCL",
+     "template_provider": "OpenStack",
+     "template": {
+       "templateData": "",
+       "templateVariables": "",
+       "templateOutput": ""
+     },
+     "template_source": {
+     "githubRepoUrl": "",
+     "githubAccessToken": "",
+     "relativePathToTemplateFolder": "OpenStack/terraform/hcl/single-vm-deploy",
+     "templateFileName": "main.tf"
+      }
+   },
+   "metadata": {
+     "displayName": "IBM PowerVC Single Virtual Machine Example",
+     "providerDisplayName": "openstack - IBM PowerVC",
+     "longDescription": "IBM PowerVC Single Virtual Machine",
+     "bullets": [
+      {
+        "title": "Clouds",
+        "description": "Openstack - IBM PowerVC - Oraclepowervc"
+      },
+      {
+        "title": "Template version",
+        "description": "1.0<br>"
+      },
+      {
+        "title": "Operating systems supported",
+        "description": "IBM PowerVM : AIX 7.2"
+      },
+      {
+        "title": "Topology",
+        "description": "openstack - IBM PowerVC: Single virtual machine"
+      },
+      {
+        "title": "Default virtual machine settings",
+        "description": "<ul><li>Openstack:<ul style=\"margin-left: 20px;\"><li>AIX 7.2</li><ul style=\"margin-left: 20px;\"><li>Flavor: Cores = 1,2,3 Memory = 32GB, 64GB</li><li>Network: Private IP - Computed, Public IP - Computed</li></ul></ul>"
+      },
+      {
+        "title": "Usage and special notes",
+        "description": "<ul><li>1. Creates a virtual server in a Openstack - IBM PowerVC environment for Oracle.</li><li>2. Deployment takes approximately 30 minutes to complete.</li></ul>"
+      }
+     ],
+     "featuredImageUrl": "https://ibmpatternengine-staticcontent-prod.eu-gb.mybluemix.net/ic_patternengine_50.png",
+     "imageUrl": "https://ibmpatternengine-staticcontent-prod.eu-gb.mybluemix.net/ic_patternengine_50.png",
+     "mediumImageUrl": "https://ibmpatternengine-staticcontent-prod.eu-gb.mybluemix.net/ic_patternengine_32.png",
+     "smallImageUrl": "https://ibmpatternengine-staticcontent-prod.eu-gb.mybluemix.net/ic_patternengine_24.png",
+     "documentationUrl": "https://console.stage1.ng.bluemix.net/docs/services/CloudAutomationManager/index.html",
+     "termsUrl": "http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-7448-01",
+     "media": [
+       {
+         "type": "image",
+         "thumbnailUrl": "https://ibmpatternengine-staticcontent-prod.eu-gb.mybluemix.net/screenshots_1.png",
+         "url": "https://ibmpatternengine-staticcontent-prod.eu-gb.mybluemix.net/screenshots_1_large.png",
+         "caption": ""
+       },
+       {
+         "type": "image",
+         "thumbnailUrl": "https://ibmpatternengine-staticcontent-prod.eu-gb.mybluemix.net/screenshots_2.png",
+         "url": "https://ibmpatternengine-staticcontent-prod.eu-gb.mybluemix.net/screenshots_2_large.png",
+         "caption": ""
+       }
+     ]
+   },
+   "toolchain": {
+     "git": "https://github.com/ibmcam/cam-toolchain"
+   }
+ }
