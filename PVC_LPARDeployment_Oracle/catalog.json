@@ -25,11 +25,11 @@
    "metadata": {
      "displayName": "IBM PowerVC Single Virtual Machine Example",
      "providerDisplayName": "openstack - IBM PowerVC",
-     "longDescription": "IBM PowerVC Single Virtual Machine",
+     "longDescription": "IBM PowerVC Single Virtual Machine Example",
      "bullets": [
       {
         "title": "Clouds",
-        "description": "Openstack - IBM PowerVC - Oraclepowervc"
+        "description": "Openstack - IBM PowerVC"
       },
       {
         "title": "Template version",
@@ -37,19 +37,19 @@
       },
       {
         "title": "Operating systems supported",
-        "description": "IBM PowerVM : AIX 7.2"
+        "description": "vmware: Ubuntu 14.4.01 x64"
       },
       {
         "title": "Topology",
-        "description": "openstack - IBM PowerVC: Single virtual machine"
+        "description": "openstack - IBM PowerVC: Single virtual machines"
       },
       {
         "title": "Default virtual machine settings",
-        "description": "<ul><li>Openstack:<ul style=\"margin-left: 20px;\"><li>AIX 7.2</li><ul style=\"margin-left: 20px;\"><li>Flavor: Cores = 1,2,3 Memory = 32GB, 64GB</li><li>Network: Private IP - Computed, Public IP - Computed</li></ul></ul>"
+        "description": "<ul><li>Openstack:<ul style=\"margin-left: 20px;\"><li>Ubuntu 16.04</li><ul style=\"margin-left: 20px;\"><li>Flavor: Cores = 1, Memory = 1GB, Storage = 25GB SAN</li><li>Network: Private IP - Computed, Public IP - Computed</li></ul></ul>"
       },
       {
         "title": "Usage and special notes",
-        "description": "<ul><li>1. Creates a virtual server in a Openstack - IBM PowerVC environment for Oracle.</li><li>2. Deployment takes approximately 30 minutes to complete.</li></ul>"
+        "description": "<ul><li>1. Creates N+1 virtual servers in a Openstack - IBM PowerVC environment specified by the user.</li><li>2. Deployment takes approximately 10 minutes to complete.</li></ul>"
       }
      ],
      "featuredImageUrl": "https://ibmpatternengine-staticcontent-prod.eu-gb.mybluemix.net/ic_patternengine_50.png",
