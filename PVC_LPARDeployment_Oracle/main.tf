@@ -1,5 +1,5 @@
 ################################################################
-# Module to deploy a Single VM for deploying S/4 HANA
+# Module to deploy Single VM
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,6 @@
 # Copyright IBM Corp. 2017.
 #
 ################################################################
-variable "vm_name" {
-  description = "The Name of the VM to be deployed."
-}
-
 variable "openstack_image_id" {
   description = "The ID of the image to be used for deploy operations."
 }
@@ -24,12 +20,8 @@ variable "openstack_flavor_id" {
   description = "The ID of the flavor to be used for deploy operations."
 }
 
-variable "number_of_instances" {
-  description = "The number of instances to provision."
-}
-
-variable "openstack_network_uuid" {
-  description = "UUID of the network to be used for deploy operations."
+variable "openstack_network_name" {
+  description = "The name of the network to be used for deploy operations."
 }
 
 variable "image_id_username" {
@@ -39,42 +31,44 @@ variable "image_id_username" {
 variable "image_id_password" {
   description = "The password of the username to SSH into image ID"
 }
+variable "pool" {
+  default = "VLAN354"
+}
+variable "ibm_stack_name" {
+  description = "Stack Name"
+}
 
 provider "openstack" {
   insecure = true
-  version  = "~> 0.3"
+  #version  = "~> 0.3"
 }
 
+variable "number_of_instances" {}
 
 resource "openstack_compute_instance_v2" "single-vm" {
   count     = "${var.number_of_instances}"
-  name      = "${var.vm_name}"
-  #name      = "${format("terraform-single-vm-%02d", count.index+1)}"
+  name      = "${var.ibm_stack_name}${format("-vm-%02d", count.index+1)}"
   image_id  = "${var.openstack_image_id}"
-  flavor_id = "${var.openstack_flavor_id}"
+  flavor_id = "${var.openstack_flavor_id}"   
 
   network {
-    name = "${var.openstack_network_uuid}" 
-}
+    name = "${var.openstack_network_name}"
+  }
 
   # Specify the ssh connection
   connection {
     user     = "${var.image_id_username}"
     password = "${var.image_id_password}"
+    timeout  = "10m"
   }
-  
-  provisioner "local-exec" {
-    command = "sleep 320", 
-  }
+}
 
+output "single-vm-ip" {
+  value = "${openstack_compute_instance_v2.single-vm.*.network.0.fixed_ip_v4}"
 }
 
 output "single-vm-openstack_id" {
   value = "${openstack_compute_instance_v2.single-vm.id}"
-}
-
-output "single-vm-ip" {
-  value = "${openstack_compute_instance_v2.single-vm.network.0.fixed_ip_v4}"
 }
 
 output "os-user-name" {
@@ -84,4 +78,6 @@ output "os-user-name" {
 output "os-user-password" {
   value = "${var.image_id_password}"
 }
+
+
 
