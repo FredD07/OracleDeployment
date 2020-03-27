@@ -54,7 +54,7 @@ resource "openstack_compute_instance_v2" "single-vm" {
   flavor_id = "${var.openstack_flavor_id}"
 
   network {
-    uuid = "${var.openstack_network_uuid}" 
+    name = "${var.openstack_network_uuid}" 
 }
 
   # Specify the ssh connection
