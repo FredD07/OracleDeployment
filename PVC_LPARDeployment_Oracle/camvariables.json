@@ -1,6 +1,8 @@
 {
-  "input_datatypes": [],
   "output_datatype": "content_template_output",
+  "input_datatypes": [ ],
+  "input_namespaces": [ ],
+  "output_namespace": "",
   "input_groups": [
     {
       "name": "cloud",
@@ -19,159 +21,122 @@
       "label": "Environment"
     }
   ],
-  "output_groups": [
-    {
-      "name": "content_template_output",
-      "label": "Outputs"
-    }
-  ],
+  "output_groups": [  {
+    "name": "content_template_output",
+    "label": "Outputs"
+  } ],
   "template_input_params": [
     {
-      "name": "ibm_stack_name",
-      "type": "string",
-      "description": "A unique stack name.",
-      "hidden": true,
-      "label": "A unique stack name.",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "environment"
-    },
-    {
-      "name": "vm_name",
-      "type": "string",
-      "description": "A unique VM name.",
-      "hidden": false,
-      "label": "A unique VM name.",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name":  "openstack_image_id",
-      "type": "string",
+      "name": "openstack_image_id",
+      "label": "Openstack Image Id",
       "description": "The ID of the image to be used for deploy operations.",
-      "hidden": false,
-      "label": "Openstack Image ID",
-      "secured": false,
+      "type": "string",
+      "default": "",
+      "validation": "",
       "required": true,
+      "secured": false,
+      "hidden": false,
       "immutable": false,
-      "group_name": "virtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name":  "number_of_instances",
-      "type": "string",
-      "description": "The number of instances to provision.",
-      "hidden": false,
-      "label": "Number of Instances to deploy",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name":  "openstack_flavor_id",
-      "type": "string",
+      "name": "openstack_flavor_id",
+      "label": "Openstack Flavor Id",
       "description": "The ID of the flavor to be used for deploy operations.",
-      "hidden": false,
-      "label": "Openstack Flavor ID",
-      "secured": false,
+      "type": "string",
+      "default": "",
+      "validation": "",
       "required": true,
+      "secured": false,
+      "hidden": false,
       "immutable": false,
-      "group_name": "virtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name":  "openstack_network_uuid",
+      "name": "openstack_network_name",
+      "label": "Openstack Network Name",
+      "description": "The name of the network to be used for deploy operations.",
       "type": "string",
-      "description": "UUID of the network to be used for deploy operations.",
-      "hidden": false,
-      "label": "Openstack  UUID Network",
-      "secured": false,
+      "default": "",
+      "validation": "",
       "required": true,
+      "secured": false,
+      "hidden": false,
       "immutable": false,
-      "group_name": "virtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name":  "image_id_username",
-      "type": "string",
+      "name": "image_id_username",
+      "label": "Image Id Username",
       "description": "The username to SSH into image ID",
-      "hidden": false,
-      "label": "Openstack Image Username",
-      "secured": false,
+      "type": "string",
+      "default": "",
+      "validation": "",
       "required": true,
+      "secured": false,
+      "hidden": false,
       "immutable": false,
-      "group_name": "virtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name":  "image_id_password",
-      "type": "password",
+      "name": "image_id_password",
+      "label": "Image Id Password",
       "description": "The password of the username to SSH into image ID",
-      "hidden": false,
-      "label": "Openstack Image Password",
-      "secured": true,
+      "type": "string",
+      "default": "",
+      "validation": "",
       "required": true,
+      "secured": false,
+      "hidden": false,
       "immutable": false,
-      "group_name": "virtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "pool",
+      "label": "Pool",
+      "description": "Pool",
+      "type": "string",
+      "default": "VLAN354",
+      "validation": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "ibm_stack_name",
+      "label": "Ibm Stack Name",
+      "description": "Stack Name",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "number_of_instances",
+      "label": "Number Of Instances",
+      "description": "Number Of Instances",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
     }
   ],
-  "template_output_params": [
-    {
-      "name": "single-vm-ip",
-      "label": "IP Addresss of Virtual Machine",
-      "description": "The Public and Public IP address",
-      "type": "string",
-      "hidden": false,
-      "secured": false,
-      "group_name": "content_template_output"
-    },
-    {
-      "name": "single-vm-openstack_id",
-      "label": "openstack ID of new LPAR",
-      "description": "openstack ID of new LPAR",
-      "type": "string",
-      "hidden": false,
-      "secured": false,
-      "group_name": "content_template_output"
-    },
-
-    {
-      "name": "os-user-name",
-      "label": "Operating system user name",
-      "description": "user name to connect to the virtual machine",
-      "type": "string",
-      "hidden": false,
-      "secured": false,
-      "group_name": "content_template_output"
-    },
-    {
-      "name": "os-user-password",
-      "label": "Operating system user password",
-      "description": "user password to connect to the virtual machine",
-      "type": "password",
-      "hidden": false,
-      "secured": false,
-      "group_name": "content_template_output"
-    },
-    {
-      "name": "stack_id",
-      "label": "Generated Stack ID",
-      "description": "The generated stack id",
-      "type": "string",
-      "hidden": false,
-      "secured": false,
-      "group_name": "content_template_output"
-    },
-    {
-      "name": "stack_name",
-      "type": "string",
-      "description": "Instance name of the deployment.",
-      "hidden": true,
-      "label": "Instance name of the deployment.",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "content_template_output"
-    }
-  ]
+  "template_output_params": [  {
+    "name": "single-vm-ip",
+    "label": "Single Vm Ip",
+    "description": "Single Vm Ip",
+    "secured": false,
+    "hidden": false,
+    "shortname": ""
+  } ]
 }
