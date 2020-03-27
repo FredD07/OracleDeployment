@@ -226,7 +226,7 @@ fi
 
 #Mount Oracle Binaries FileSystems
 nfso -o nfs_use_reserved_ports=1
-mount gdpnfs:/export/Oracle/ /stage
+mount 10.7.33.2:/export/Oracle/ /stage
 
 #Installation Grid Infrastructure Binaries
 chmod 644 /etc/vfs
