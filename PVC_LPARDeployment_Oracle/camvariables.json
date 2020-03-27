@@ -92,19 +92,6 @@
       "immutable_after_create": false
     },
     {
-      "name": "pool",
-      "label": "Pool",
-      "description": "Pool",
-      "type": "string",
-      "default": "VLAN354",
-      "validation": "",
-      "required": true,
-      "secured": false,
-      "hidden": false,
-      "immutable": false,
-      "immutable_after_create": false
-    },
-    {
       "name": "ibm_stack_name",
       "label": "Ibm Stack Name",
       "description": "Stack Name",
@@ -138,5 +125,42 @@
     "secured": false,
     "hidden": false,
     "shortname": ""
-  } ]
+  },                             
+    {
+      "name": "single-vm-openstack_id",
+      "label": "openstack ID of new LPAR",
+      "description": "openstack ID of new LPAR",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "os-user-name",
+      "label": "Operating system user name",
+      "description": "user name to connect to the virtual machine",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "os-user-password",
+      "label": "Operating system user password",
+      "description": "user password to connect to the virtual machine",
+      "type": "password",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "stack_id",
+      "label": "Generated Stack ID",
+      "description": "The generated stack id",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    }
+   ]
 }
