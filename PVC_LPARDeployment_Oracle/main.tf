@@ -66,7 +66,7 @@ output "single-vm-ip" {
 }
 
 output "single-vm-openstack_id" {
-  value = "${openstack_compute_instance_v2.single-vm.id}"
+  value = "${openstack_compute_instance_v2.single-vm.*.id}"
 }
 
 output "os-user-name" {
