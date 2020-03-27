@@ -31,9 +31,7 @@ variable "image_id_username" {
 variable "image_id_password" {
   description = "The password of the username to SSH into image ID"
 }
-variable "pool" {
-  default = "VLAN354"
-}
+
 variable "ibm_stack_name" {
   description = "Stack Name"
 }
