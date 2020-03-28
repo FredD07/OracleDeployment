@@ -112,7 +112,7 @@ resource "null_resource" "VMforOracleDB" {
     host     = "${var.vm_ip_address}"
     user     = "${var.image_id_username}"
     password = "${var.image_id_password}"
-    timeout  = "20m"
+    timeout  = "25m"
   }
   
  provisioner "file" {
@@ -126,7 +126,7 @@ mkdev -l iocp0
 # make iocp0 persistent
 chdev -l iocp0 -P -a autoconfig='available'
 
-sleep 60
+sleep 160
 cfgmgr
 
 echo "search gbs.mop.fr" >> /etc/resolv.conf
