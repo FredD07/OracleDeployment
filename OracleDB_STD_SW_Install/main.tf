@@ -84,7 +84,7 @@ chown oracle:oinstall /u01/app/oraInventory
 
 #Mount Oracle Binaries FileSystems
 nfso -o nfs_use_reserved_ports=1 
-mount gdpnfs:/export/Oracle/ /stage
+mount 10.7.33.2:/export/Oracle/ /stage
 
 #Installation Binaire Oracle Database
 
