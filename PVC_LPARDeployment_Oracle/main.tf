@@ -62,11 +62,11 @@ resource "openstack_compute_instance_v2" "single-vm" {
 }
 
 output "single-vm-ip" {
-  value = "${openstack_compute_instance_v2.single-vm.*.network.0.fixed_ip_v4}"
+  value = "${openstack_compute_instance_v2.single-vm.network.0.fixed_ip_v4}"
 }
 
 output "single-vm-openstack_id" {
-  value = "${openstack_compute_instance_v2.single-vm.*.id}"
+  value = "${openstack_compute_instance_v2.single-vm.id}"
 }
 
 output "os-user-name" {
