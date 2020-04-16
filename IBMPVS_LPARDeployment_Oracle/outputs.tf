@@ -6,14 +6,14 @@
 #    value = "${ibm_pi_instance.pvminstance.pi_minproc}"
 #}
 
-#output "health_status" {
-#    value = "${ibm_pi_instance.pvminstance.pi_health_status}"
-#}
+output "health_status" {
+    value = "${ibm_pi_instance.pvminstance.health_status}"
+}
 
 output "ip_address" {
     value = "${ibm_pi_instance.pvminstance.addresses}"
 }
 
-output "progress" {
-    value = "${ibm_pi_instance.pvminstance.pi_progress}"
-}
+#output "progress" {
+#    value = "${ibm_pi_instance.pvminstance.progress}"
+#}
