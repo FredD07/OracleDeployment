@@ -4,12 +4,12 @@ variable "ibmcloud_api_key" {
 
 variable "ibmcloud_region" {
     description = "Denotes which IBM Cloud region to connect to"
-    default     = "us-south"
+    default     = "eu-de"
 }
 
 variable "ibmcloud_zone" {
     description = "Denotes the zone within the region to connect to (only needed for multi-zone regions--e.g., eu-de-1)"
-    default     = "us-south"
+    default     = "eu-de-1"
 }
 
 variable "vm_name" {
@@ -24,7 +24,7 @@ variable "vm_private_key_base64" {
 
 variable "power_instance_id" {
     description = "Power Virtual Server instance ID associated with your IBM Cloud account (note that this is NOT the API key)"
-    default  =  "f0f71cbe-7997-4924-8321-7f876a494973"
+    default  =  "c7426567-d768-47ca-9741-7b4f4dbce4ae"
 }
 
 variable "memory" {
