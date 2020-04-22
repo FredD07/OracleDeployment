@@ -29,12 +29,12 @@ variable "power_instance_id" {
 
 variable "memory" {
     description = "Amount of memory (GB) to be allocated to the VM"
-    default     = "12"
+    default     = "8"
 }
 
 variable "processors" {
     description = "Number of virtual processors to allocate to the VM"
-    default     = "1"
+    default     = "0.5"
 }
 
 variable "proc_type" {
@@ -44,6 +44,7 @@ variable "proc_type" {
 
 variable "ssh_key_name" {
     description = "SSH key name in IBM Cloud to be used for SSH logins"
+    default = "teskey"
 }
 
 variable "shareable" {
@@ -53,7 +54,7 @@ variable "shareable" {
 
 variable "networks" {
     description = "List of networks that should be attached to the VM"
-    default     = ["internal","public-192_168_130_56-29-VLAN_2067"]
+    default     = ["test","public-192_168_130_104-29-VLAN_2009"]
 }
 
 variable "system_type" {
@@ -67,8 +68,8 @@ variable "migratable" {
 }
 
 variable "image_name" {
-    description = "Name of the image from which the VM should be deployed"
-    default     = "IBMi74-MOP"
+    description = "Name of the AIX Image to Deploy"
+    default = "7100-05-04"
 }
 
 variable "replication_policy" {
