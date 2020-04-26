@@ -1,5 +1,6 @@
 ## Template to be used by the IBM Provider for Power Systems
 
+
 resource "local_file" "vm_private_key" {
     content_base64    = "${var.vm_private_key_base64}"
     filename          = "tmp/id_rsa"
@@ -27,7 +28,6 @@ resource "ibm_pi_instance" "pvminstance" {
     pi_image_id           = "${data.ibm_pi_image.power_images.id}"
     pi_volume_ids         = []
     pi_network_ids        = ["${data.ibm_pi_network.power_networks.*.id}"]
-    pi_network_ids	  = []
     pi_key_pair_name      = "${var.ssh_key_name}"
     pi_sys_type           = "${var.system_type}"
     pi_replication_policy = "${var.replication_policy}"
@@ -35,18 +35,17 @@ resource "ibm_pi_instance" "pvminstance" {
     pi_replicants         = "${var.replicants}"
     pi_cloud_instance_id  = "${var.power_instance_id}"
 
- #   provisioner "remote-exec" {
- #      scripts = [
- #           "scripts/wait_for_vm.sh",
- #           "scripts/bootstrap-aix.sh",
- #       ]
-#
- #       connection {
-  #          type        = "ssh"
-   #         host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "externalip")}"
-    #        timeout     = "15m"
-   #         user        = "root"
-   #         private_key = "${file("${local_file.vm_private_key.filename}")}"
-   #     }
-   # }
+    provisioner "remote-exec" {
+       scripts = [
+            "scripts/wait_for_vm.sh",
+        ]
+
+        connection {
+            type        = "ssh"
+            host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "externalip")}"
+            timeout     = "15m"
+            user        = "root"
+            private_key = "${file("${local_file.vm_private_key.filename}")}"
+        }
+    }
 }
