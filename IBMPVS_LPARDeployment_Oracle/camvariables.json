@@ -35,7 +35,6 @@
       "name": "ibmcloud_api_key",
       "type": "string",
       "description": "IBM Cloud API Key",
-      "default" : "y91gIp7z5v1YFsNp0e9zx751aNnzfHrKwk6ngiQZ2JOg",
       "hidden": false,
       "label": "IBM Cloud API Key",
       "secured": true,
