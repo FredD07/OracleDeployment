@@ -42,7 +42,7 @@ resource "ibm_pi_instance" "pvminstance" {
 
         connection {
             type        = "ssh"
-            host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "External Adress")}"
+            host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "External Address")}"
             timeout     = "15m"
             user        = "root"
             private_key = "${file("${local_file.vm_private_key.filename}")}"
