@@ -2,9 +2,9 @@
 #    value = "${ibm_pi_instance.pvminstance.pi_instance_status}"
 #}
 
-#output "min_proc" {
-#    value = "${ibm_pi_instance.pvminstance.pi_minproc}"
-#}
+output "vm_instance_id" {
+    value = "${ibm_pi_instance.pvminstance.instance_id}"
+}
 
 output "health_status" {
     value = "${ibm_pi_instance.pvminstance.health_status}"
