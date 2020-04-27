@@ -1,6 +1,9 @@
-#output "status" {
-#    value = "${ibm_pi_instance.pvminstance.pi_instance_status}"
-#}
+output "adress" {
+    value = "${ibm_pi_instance.pvminstance.addresses[0]}"
+}
+output "adress2" {
+    value = "${ibm_pi_instance.pvminstance.addresses[0].ip}"
+}
 
 output "vm_instance_id" {
     value = "${ibm_pi_instance.pvminstance.instance_id}"
