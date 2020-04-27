@@ -248,6 +248,13 @@
       "hidden": false,
       "label": "VM IP Address",
       "secured": false
+    },
+     {
+      "name": "vm_instance_id",
+      "type": "string",
+      "hidden": false,
+      "label": "The unique identifier of the instance",
+      "secured": false
     }
   ]
 }
