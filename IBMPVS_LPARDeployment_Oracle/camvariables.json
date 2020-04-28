@@ -22,13 +22,9 @@
       "name": "network",
       "label": "Network Configuration"
     },
-   {
-      "name": "cloud",
-      "label": "IBM Cloud Configuration"
-    },
     {
       "name": "ASMDetails",
-      "label": "Oracle ASM Details"
+      "label": "Oracle ASM Storage Configuration Details"
     }
   ],
   "output_groups": [
@@ -217,7 +213,7 @@
       "type": "string",
       "description": "Replication Policy",
       "default": "none",
-      "hidden": false,
+      "hidden": true,
       "label": "Replication Policy",
       "secured": false,
       "required": true,
@@ -229,7 +225,7 @@
       "type": "string",
       "description": "Number of VMs to Deploy",
       "default": "1",
-      "hidden": false,
+      "hidden": true,
       "label": "Number of VMs to Deploy",
       "secured": false,
       "required": true,
@@ -252,7 +248,7 @@
       "type": "string",
       "description": "Number of ASM Data Diskgroup ",
       "hidden": false,
-      "label": "Number of ASM Data Diskgroup",
+      "label": "Number of ASM Data Diskgroup Volumes",
       "secured": false,
       "required": true,
       "immutable": false,
@@ -263,7 +259,7 @@
       "type": "string",
       "description": "Size of ASM Data Diskgroup ",
       "hidden": false,
-      "label": "Size of ASM Data Diskgroup (GB)",
+      "label": "Size of ASM Data Diskgroup Volumes (GB)",
       "secured": false,
       "required": true,
       "immutable": false,
@@ -294,9 +290,9 @@
      {
       "name":  "asm_reco_dg_disk",
       "type": "string",
-      "description": "Number of ASM Reco Diskgroup ",
+      "description": "Number of ASM RECO Diskgroup ",
       "hidden": false,
-      "label": "Number of ASM RECO Diskgroup",
+      "label": "Number of ASM RECO Diskgroup Volumes",
       "secured": false,
       "required": true,
       "immutable": false,
@@ -307,7 +303,7 @@
       "type": "string",
       "description": "Size of ASM RECO Diskgroup ",
       "hidden": false,
-      "label": "Size of ASM RECO Diskgroup (GB)",
+      "label": "Size of ASM RECO Diskgroup Volumes (GB)",
       "secured": false,
       "required": true,
       "immutable": false,
