@@ -21,8 +21,7 @@
     {
       "name": "network",
       "label": "Network Configuration"
-    }
-
+    },
    {
       "name": "cloud",
       "label": "IBM Cloud Configuration"
