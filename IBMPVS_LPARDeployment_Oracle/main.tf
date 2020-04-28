@@ -1,3 +1,7 @@
+resource "local_file" "vm_private_key" {
+    content_base64    = "${var.vm_private_key_base64}"
+    filename          = "tmp/id_rsa"
+}
 
 resource "ibm_pi_volume" "asm_data_volume"{
   count = "${var.asm_data_dg_disk}"
