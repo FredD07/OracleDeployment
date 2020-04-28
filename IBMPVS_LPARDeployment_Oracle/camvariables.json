@@ -1,9 +1,8 @@
 {
-  "input_datatypes": [
-  ],
+  "input_datatypes": [],
   "output_datatype": "content_template_output",
   "input_groups": [
-    {
+   {
       "name": "cloud",
       "label": "IBM Cloud Configuration"
     },
@@ -23,6 +22,15 @@
       "name": "network",
       "label": "Network Configuration"
     }
+
+   {
+      "name": "cloud",
+      "label": "IBM Cloud Configuration"
+    },
+    {
+      "name": "ASMDetails",
+      "label": "Oracle ASM Details"
+    }
   ],
   "output_groups": [
     {
@@ -31,7 +39,7 @@
     }
   ],
   "template_input_params": [
-    {
+     {
       "name": "ibmcloud_api_key",
       "type": "string",
       "description": "IBM Cloud API Key",
@@ -239,16 +247,94 @@
       "required": true,
       "immutable": false,
       "group_name": "network"
-    }
-  ],
-  "template_output_params": [
+    },
     {
-      "name": "ip_address",
+      "name":  "asm_data_dg_disk",
       "type": "string",
+      "description": "Number of ASM Data Diskgroup ",
       "hidden": false,
-      "label": "VM IP Address",
-      "secured": false
+      "label": "Number of ASM Data Diskgroup",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_data_dg_size",
+      "type": "string",
+      "description": "Size of ASM Data Diskgroup ",
+      "hidden": false,
+      "label": "Size of ASM Data Diskgroup (GB)",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+     "name":    "asm_data_type",
+     "type": "string",
+     "label": "Storage Tier for Oracle ASM Data Diskgroup",
+     "description": "Storage Tier for Oracle ASM Data Diskgroup",
+     "hidden": false,
+     "secured": false,
+     "required": true,
+     "immutable": false,
+     "group_name": "ASMDetails",
+      "options": [ 
+    {    
+      "value": "ssd",
+      "label": "Tier1",
+      "default": "true" 
+     },  
+     {    
+      "value": "standard",  
+      "label": "Tier3"  
+     }
+    ] 
+    },
+     {
+      "name":  "asm_reco_dg_disk",
+      "type": "string",
+      "description": "Number of ASM Reco Diskgroup ",
+      "hidden": false,
+      "label": "Number of ASM RECO Diskgroup",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_reco_dg_size",
+      "type": "string",
+      "description": "Size of ASM RECO Diskgroup ",
+      "hidden": false,
+      "label": "Size of ASM RECO Diskgroup (GB)",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+     "name":    "asm_reco_type",
+     "type": "string",
+     "label": "Storage Tier for Oracle ASM Data Diskgroup",
+     "description": "Storage Tier for Oracle ASM Data Diskgroup",
+     "hidden": false,
+     "secured": false,
+     "required": true,
+     "immutable": false,
+     "group_name": "ASMDetails",
+      "options": [ 
+    {    
+      "value": "ssd",
+      "label": "Tier1",
+      "default": "true" 
+     },  
+     {    
+      "value": "standard",  
+      "label": "Tier3"  
+     }
+    ] 
     }
-  ]
+    ]
 }
-    
