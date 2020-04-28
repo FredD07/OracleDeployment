@@ -281,12 +281,12 @@
      "group_name": "ASMDetails",
       "options": [ 
     {    
-      "value": "ssd",
+      "value": "tier1",
       "label": "Tier1",
       "default": "true" 
      },  
      {    
-      "value": "standard",  
+      "value": "tier3",  
       "label": "Tier3"  
      }
     ] 
@@ -325,12 +325,12 @@
      "group_name": "ASMDetails",
       "options": [ 
     {    
-      "value": "ssd",
+      "value": "tier1",
       "label": "Tier1",
       "default": "true" 
      },  
      {    
-      "value": "standard",  
+      "value": "tier3",  
       "label": "Tier3"  
      }
     ] 
