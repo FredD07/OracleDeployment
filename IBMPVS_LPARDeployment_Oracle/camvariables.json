@@ -93,6 +93,34 @@
       "immutable": false,
       "group_name": "image"
     },
+        {
+      "name": "image_id_username",
+      "label": "Image Id Username",
+      "description": "The username to SSH into image ID",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "group_name": "image"
+    },
+    {
+      "name": "image_id_password",
+      "label": "Image Id Password",
+      "description": "The password of the username to SSH into image ID",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "group_name": "image"
+    },
     {
       "name": "system_type",
       "type": "string",
@@ -113,18 +141,6 @@
       "hidden": false,
       "label": "Name of the VM",
       "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "vm"
-    },
-    {
-      "name": "vm_private_key_base64",
-      "type": "string",
-      "description": "Base64-encoded Private Key to SSH to the VM",
-      "default" : "MIIEogIBAAKCAQEAt7+YXYgDOxDVL2g0F01OgrLIcL/0FUi4FBSwIC6gaSgKXHYDRtYUIgtRDijOGv5lzvyq9iHR+gJcZ0mG3pZRPOIgrsGSXRQT1TXdBAhuS2vGlEx2lL4Zlm7dSKom606ZFFrNFW7KdL/Dg0tr2R3kheXHN91gUV/qL6wCD0ROW6QSs3c9knNdcWfMwaALsmDgw+yBu3oCy1M9Pyc8Wa+7r9S98dtTB/TfDSt8xOt4vZ/PKYEAxneIZc14eBQ94HOP7VPGT47JJ/vvsniMWVdccUdMvAaKFL1RvH9sr8wOdw+GtKoFTO9lX5MAuvUIMBXQIsDDyfzQ9IdaNluiwlrMtQIDAQABAoIBAGlfb3IbwLaLpaXFHTJLu/1Jp5a5DbFy/VVOs94Qvx7uvlpdtu1VcUBAux/imKd0QlAcJ7J0nKTB29nDmZtmGnpOty1ghp3oGKOJexCIATAxQzTiUJJmHehd9XppUV5ZuYGpvLhQy7t+CRHvG47sDJQYvFE2G7kuxu7Ftnyo0ELOcMSWvD7h6gw6boEvTkTAkAvlOwhOCAVbywfzaPWt/4pg8z8zBfC0nGDba4fz/8GR+YmSrA5SY1DS4itIC+cUSrNjaviebrjgyTwfIy0m0gKvvBPQai/Oe4PWOBlH9gtaoWby66i7gyAc3JlgdEy1wXlUoNzyRaqLeXSOS7kBN2ECgYEA2hJ+NUKVr11HhmcNs8VI1XQZ6Z6vO7GqIrxQIcZpjochZ0k9necB3Vjsz2MZZXYZ0DwaXi8+7e3PnD16j1LyoBL9RvwEYmjhC9Ltqm37taQ+x/g/9kDRZt/rflPGfRJdtJElyCzQ5AL8b4YW+XkR1XkWNO68LbAex6bMxnFVKNkCgYEA17Tb9HVzghod9DHr3zXzq/JIs2qe8yJvZmFddom3vpqz6cm5sEfcL/AevezHvn3cftamFm28SZtc5UfHfs84do3j/flWu62YhbecRTy49KPrladcd2wG0G/yy+qpsOURbFXoELdcz9jtUJVVMcQnm/zleFxUygGIBYiM9VHd+T0CgYAIsCHtF0kFYo798M8f8WU0c9qwbw0GMM7ZcW0z20bLUeDnz4gv6UsuuWM94/HYE/t1S1+1juZP7mCOFfjzCtf1vqvujw3RqeIFaZLkbltP4kpKBz7tHan6EkO8lbPbucaX8gxyTC7KVsAd5Va2+7bVLWzQEQ7YNyMSyzdvVIaTCQKBgBaBommRT6oFe5adFtVFVdVdBETkHQ2VTDZMdmoF2IwkrBz6lUtVVB4UWcDLUdQIYddCIjY44Op1MW4i3SfYCzYje+Rl/ay7YiyhicaXnVy5Nb15puY2+UcKRzULmQUCAZ1iIUKNPzvYkHpV+nuk0dUuv+qdB6PEISMiqkJ2dkipAoGAf+bYNe/+kKH7yLtDD9htb2CoOZLJiLU0KMhn6HnUzkM5sRuOo5jzZgfXzlB+Thw6kiVPlpsjpr9kiKHOpsM5fQuM0sRlTyjwiuRyh0Jt1GyotFzHtvVKBySUi8pYy+eCi7Ksl+L3JqQDGVlX6/niR+YySDqDoQzcGSzQuQ6eAfs=",
-      "hidden": true,
-      "label": "Base64-encoded Private Key to SSH to the VM",
-      "secured": true,
       "required": true,
       "immutable": false,
       "group_name": "vm"
