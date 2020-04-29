@@ -4,6 +4,14 @@ variable "vm_name" {
   default = "demo-VM4"
 }
 
+variable "image_id_username" {
+  description = "The username to SSH into image ID"
+}
+
+variable "image_id_password" {
+  description = "The password of the username to SSH into image ID"
+}
+
 variable "asm_data_dg_disk" {
   description = "Number of ASM Data Diskgroup"
   default = 2
