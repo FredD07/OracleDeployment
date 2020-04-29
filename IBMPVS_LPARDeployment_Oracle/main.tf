@@ -93,5 +93,27 @@ provisioner "remote-exec" {
             private_key = "${file("${local_file.vm_private_key.filename}")}"
         }
     }
+
+ provisioner "file" {
+    destination = "/tmp/PrepareASMDisk.sh"
+    content     = <<EOF
+
+#!/bin/ksh
+
+# make iocp0 available
+mkdev -l iocp0
+# make iocp0 persistent
+chdev -l iocp0 -P -a autoconfig='available'
+
+EOF
+   }
+
+  # Execute the script remotely
+  provisioner "remote-exec" {
+    inline = [
+      "bash -c 'chmod +x /tmp/PrepareASMDisk.sh'",
+      "bash -c '/tmp/PrepareASMDisk.sh >> PrepareASMDisk.log 2>&1'"
+    ]
+  }
 }
 
