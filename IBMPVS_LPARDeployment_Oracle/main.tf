@@ -1,8 +1,3 @@
-resource "local_file" "vm_private_key" {
-    content_base64    = "${var.vm_private_key_base64}"
-    filename          = "tmp/id_rsa"
-}
-
 resource "ibm_pi_volume" "asm_data_volume"{
   count = "${var.asm_data_dg_disk}"
   pi_volume_size       = "${var.asm_data_dg_size}"
@@ -86,11 +81,11 @@ provisioner "remote-exec" {
         ]
 
        connection {
+           user     = "${var.image_id_username}"
+           password = "${var.image_id_password}"
+           timeout  = "10m"
             type        = "ssh"
             host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "external_ip")}"
-            timeout     = "15m"
-            user        = "root"
-            private_key = "${file("${local_file.vm_private_key.filename}")}"
         }
     }
 
