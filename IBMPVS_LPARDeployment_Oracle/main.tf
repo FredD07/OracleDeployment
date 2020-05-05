@@ -79,13 +79,5 @@ provisioner "remote-exec" {
        scripts = [
             "scripts/wait_for_vm.sh",
         ]
-
-       connection {
-           user     = "${var.image_id_username}"
-           password = "${var.image_id_password}"
-           timeout  = "10m"
-            type        = "ssh"
-            host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "external_ip")}"
-        }
 }
 
