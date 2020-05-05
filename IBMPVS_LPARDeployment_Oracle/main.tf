@@ -79,36 +79,6 @@ provisioner "remote-exec" {
        scripts = [
             "scripts/wait_for_vm.sh",
         ]
-
-       connection {
-           user     = "${var.image_id_username}"
-           password = "${var.image_id_password}"
-           timeout  = "10m"
-            type        = "ssh"
-            host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "external_ip")}"
-        }
-    }
-
- provisioner "file" {
-    destination = "/tmp/PrepareASMDisk.sh"
-    content     = <<EOF
-
-#!/bin/ksh
-
-# make iocp0 available
-mkdev -l iocp0
-# make iocp0 persistent
-chdev -l iocp0 -P -a autoconfig='available'
-
-EOF
-   }
-
-  # Execute the script remotely
-  provisioner "remote-exec" {
-    inline = [
-      "bash -c 'chmod +x /tmp/PrepareASMDisk.sh'",
-      "bash -c '/tmp/PrepareASMDisk.sh >> PrepareASMDisk.log 2>&1'"
-    ]
-  }
 }
+  }
 
