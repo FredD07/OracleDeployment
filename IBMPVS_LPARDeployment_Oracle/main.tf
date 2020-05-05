@@ -80,4 +80,5 @@ provisioner "remote-exec" {
             "scripts/wait_for_vm.sh",
         ]
 }
+  }
 
