@@ -37,11 +37,26 @@ variable "asm_password" {
   description = "ASM Instance Password"
 }
 
+variable "asm_data_dg_disk" {
+  description = "Number of ASM Data Diskgroup"
+}
+
+variable "asm_data_dg_size" {
+  description = "Size of ASM Data Diskgroup"
+}
+
+variable "asm_reco_dg_disk" {
+  description = "Number of ASM RECO Diskgroup"
+}
+
+variable "asm_reco_dg_size" {
+  description = "Size of ASM RECO Diskgroup"
+}
+
 provider "openstack" {
   insecure = true
   version  = "~> 0.3"
 }
-
 
 resource "null_resource" "VMforOracleDB" {
  # Specify the ssh connection
