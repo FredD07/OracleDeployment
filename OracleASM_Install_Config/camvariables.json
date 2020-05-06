@@ -95,6 +95,50 @@
       "required": true,
       "immutable": false,
       "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_data_dg_disk",
+      "type": "string",
+      "description": "Number of ASM Data Diskgroup ",
+      "hidden": false,
+      "label": "Number of ASM Data Diskgroup",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_data_dg_size",
+      "type": "string",
+      "description": "Size of ASM Data Diskgroup ",
+      "hidden": false,
+      "label": "Size of ASM Data Diskgroup (GB)",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+     {
+      "name":  "asm_reco_dg_disk",
+      "type": "string",
+      "description": "Number of ASM Reco Diskgroup ",
+      "hidden": false,
+      "label": "Number of ASM RECO Diskgroup",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_reco_dg_size",
+      "type": "string",
+      "description": "Size of ASM RECO Diskgroup ",
+      "hidden": false,
+      "label": "Size of ASM RECO Diskgroup (GB)",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
     }
     ]
 }
