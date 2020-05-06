@@ -34,7 +34,7 @@
       "hidden": false,
       "immutable": false,
       "immutable_after_create": false,
-      "group_name": "Cloud Input Variables"
+      "group_name": "cloud"
     },
     {
       "name": "openstack_flavor_id",
@@ -48,7 +48,7 @@
       "hidden": false,
       "immutable": false,
       "immutable_after_create": false,
-      "group_name": "Cloud Input Variables"
+      "group_name": "cloud"
     },
     {
       "name": "openstack_network_name",
@@ -62,7 +62,7 @@
       "hidden": false,
       "immutable": false,
       "immutable_after_create": false,
-      "group_name": "Cloud Input Variables"
+      "group_name": "cloud"
     },
     {
       "name": "image_id_username",
@@ -76,7 +76,7 @@
       "hidden": false,
       "immutable": false,
       "immutable_after_create": false,
-      "group_name": "Cloud Input Variables"
+      "group_name": "cloud"
     },
     {
       "name": "image_id_password",
@@ -90,7 +90,7 @@
       "hidden": false,
       "immutable": false,
       "immutable_after_create": false,
-      "group_name": "Cloud Input Variables"
+      "group_name": "cloud"
     },
     {
       "name": "ibm_stack_name",
