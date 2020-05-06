@@ -69,6 +69,12 @@ resource "openstack_compute_instance_v2" "single-vm" {
     name = "${var.openstack_network_name}"
   }
 
+provisioner "remote-exec" {
+       scripts = [
+            "scripts/wait_for_vm.sh",
+        ]
+}
+
   # Specify the ssh connection
   connection {
     user     = "${var.image_id_username}"
