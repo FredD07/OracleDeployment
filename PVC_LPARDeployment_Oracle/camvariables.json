@@ -13,14 +13,6 @@
       "label": "Virtual Machine Input Variables"
     },
     {
-      "name": "ssh_keys",
-      "label": "SSH Keys"
-    },
-    {
-      "name": "environment",
-      "label": "Environment"
-    },
-    {
       "name": "ASMDetails",
       "label": "Oracle ASM Details"
     }
@@ -41,7 +33,8 @@
       "secured": false,
       "hidden": false,
       "immutable": false,
-      "immutable_after_create": false
+      "immutable_after_create": false,
+      "group_name": "Cloud Input Variables"
     },
     {
       "name": "openstack_flavor_id",
@@ -54,7 +47,8 @@
       "secured": false,
       "hidden": false,
       "immutable": false,
-      "immutable_after_create": false
+      "immutable_after_create": false,
+      "group_name": "Cloud Input Variables"
     },
     {
       "name": "openstack_network_name",
@@ -67,7 +61,8 @@
       "secured": false,
       "hidden": false,
       "immutable": false,
-      "immutable_after_create": false
+      "immutable_after_create": false,
+      "group_name": "Cloud Input Variables"
     },
     {
       "name": "image_id_username",
@@ -80,7 +75,8 @@
       "secured": false,
       "hidden": false,
       "immutable": false,
-      "immutable_after_create": false
+      "immutable_after_create": false,
+      "group_name": "Cloud Input Variables"
     },
     {
       "name": "image_id_password",
@@ -93,11 +89,12 @@
       "secured": false,
       "hidden": false,
       "immutable": false,
-      "immutable_after_create": false
+      "immutable_after_create": false,
+      "group_name": "Cloud Input Variables"
     },
     {
       "name": "ibm_stack_name",
-      "label": "Ibm Stack Name",
+      "label": "Virtual Machine Name",
       "description": "Stack Name",
       "type": "string",
       "default": "",
@@ -106,7 +103,8 @@
       "secured": false,
       "hidden": false,
       "immutable": false,
-      "immutable_after_create": false
+      "immutable_after_create": false,
+      "group_name": "virtualmachine"
     },
     {
       "name": "number_of_instances",
@@ -119,7 +117,8 @@
       "secured": false,
       "hidden": false,
       "immutable": false,
-      "immutable_after_create": false
+      "immutable_after_create": false,
+      "group_name": "virtualmachine"
     },
  {
       "name":  "asm_data_dg_disk",
@@ -172,7 +171,8 @@
     "description": "Single Vm Ip",
     "secured": false,
     "hidden": false,
-    "shortname": ""
+    "shortname": "",
+    "group_name": "content_template_output"
   },                             
     {
       "name": "single-vm-openstack_id",
