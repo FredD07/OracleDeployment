@@ -18,28 +18,6 @@
     }
   ],
   "template_input_params": [
-      {
-      "name":  "openstack_image_id",
-      "type": "string",
-      "description": "The ID of the image to be used for deploy operations.",
-      "hidden": false,
-      "label": "Openstack Image ID",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "vm_name",
-      "type": "string",
-      "description": "VM Name",
-      "hidden": false,
-      "label": "AIX LPAR Name",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
     {
       "name": "vm_ip_address",
       "type": "string",
@@ -113,50 +91,6 @@
       "description": "ASM Instance Password",
       "hidden": false,
       "label": "ASM Instance Password",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    },
-    {
-      "name":  "asm_data_dg_disk",
-      "type": "string",
-      "description": "Number of ASM Data Diskgroup ",
-      "hidden": false,
-      "label": "Number of ASM Data Diskgroup",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    },
-    {
-      "name":  "asm_data_dg_size",
-      "type": "string",
-      "description": "Size of ASM Data Diskgroup ",
-      "hidden": false,
-      "label": "Size of ASM Data Diskgroup (GB)",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    },
-     {
-      "name":  "asm_reco_dg_disk",
-      "type": "string",
-      "description": "Number of ASM Reco Diskgroup ",
-      "hidden": false,
-      "label": "Number of ASM RECO Diskgroup",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    },
-    {
-      "name":  "asm_reco_dg_size",
-      "type": "string",
-      "description": "Size of ASM RECO Diskgroup ",
-      "hidden": false,
-      "label": "Size of ASM RECO Diskgroup (GB)",
       "secured": false,
       "required": true,
       "immutable": false,
