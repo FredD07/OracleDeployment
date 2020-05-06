@@ -13,16 +13,8 @@
 #
 ################################################################
 
-variable "vm_name" {
-  description = "AIX LPAR Name"
-}
-
 variable "vm_ip_address" {
   description = "The IP address of the VM to deploy."
-}
-
-variable "openstack_image_id" {
-  description = "The ID of the image to be used for deploy operations."
 }
 
 variable "image_id_username" {
