@@ -19,6 +19,10 @@
     {
       "name": "environment",
       "label": "Environment"
+    },
+    {
+      "name": "ASMDetails",
+      "label": "Oracle ASM Details"
     }
   ],
   "output_groups": [  {
@@ -109,13 +113,57 @@
       "label": "Number Of Instances",
       "description": "Number Of Instances",
       "type": "string",
-      "default": "",
+      "default": "1",
       "validation": "",
       "required": true,
       "secured": false,
       "hidden": false,
       "immutable": false,
       "immutable_after_create": false
+    },
+ {
+      "name":  "asm_data_dg_disk",
+      "type": "string",
+      "description": "Number of ASM Data Diskgroup ",
+      "hidden": false,
+      "label": "Number of ASM Data Diskgroup",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_data_dg_size",
+      "type": "string",
+      "description": "Size of ASM Data Diskgroup ",
+      "hidden": false,
+      "label": "Size of ASM Data Diskgroup (GB)",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+     {
+      "name":  "asm_reco_dg_disk",
+      "type": "string",
+      "description": "Number of ASM Reco Diskgroup ",
+      "hidden": false,
+      "label": "Number of ASM RECO Diskgroup",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
+    },
+    {
+      "name":  "asm_reco_dg_size",
+      "type": "string",
+      "description": "Size of ASM RECO Diskgroup ",
+      "hidden": false,
+      "label": "Size of ASM RECO Diskgroup (GB)",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
     }
   ],
   "template_output_params": [  {
