@@ -80,7 +80,7 @@ resource "openstack_compute_instance_v2" "single-vm" {
 #Create and Attach Volumes for ASM DATA Diskgroup
 resource "openstack_blockstorage_volume_v2" "asm_data_volumes" {
   count = "${var.asm_data_dg_disk}"
-  name = "${var.vm_name}_${format("asm_data-%02d", count.index + 1)}"
+  name = "${var.ibm_stack_name}_${format("asm_data-%02d", count.index + 1)}"
   size =  "${var.asm_data_dg_size}"
 }
 
@@ -93,7 +93,7 @@ resource "openstack_compute_volume_attach_v2" "asm_data_attachments" {
 #Create and Attach Volumes for ASM RECO Diskgroup
 resource "openstack_blockstorage_volume_v2" "asm_reco_volumes" {
   count = "${var.asm_reco_dg_disk}"
-  name = "${var.vm_name}_${format("asm_reco-%02d", count.index + 1)}"
+  name = "${var.ibm_stack_name}_${format("asm_reco-%02d", count.index + 1)}"
   size =  "${var.asm_reco_dg_size}"
 }
 
@@ -106,7 +106,7 @@ resource "openstack_compute_volume_attach_v2" "asm_reco_attachments" {
 #Create and Attach Volumes for ASM REPO Diskgroup
 resource "openstack_blockstorage_volume_v2" "asm_repo_volumes" {
   count = 2
-  name = "${var.vm_name}_${format("asm_repo-%02d", count.index + 1)}"
+  name = "${var.ibm_stack_name}_${format("asm_repo-%02d", count.index + 1)}"
   size =  10
 }
 
