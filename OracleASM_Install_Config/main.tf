@@ -13,16 +13,8 @@
 #
 ################################################################
 
-variable "vm_name" {
-  description = "AIX LPAR Name"
-}
-
 variable "vm_ip_address" {
   description = "The IP address of the VM to deploy."
-}
-
-variable "openstack_image_id" {
-  description = "The ID of the image to be used for deploy operations."
 }
 
 variable "image_id_username" {
@@ -45,65 +37,11 @@ variable "asm_password" {
   description = "ASM Instance Password"
 }
 
-variable "asm_data_dg_disk" {
-  description = "Number of ASM Data Diskgroup"
-}
-
-variable "asm_data_dg_size" {
-  description = "Size of ASM Data Diskgroup"
-}
-
-variable "asm_reco_dg_disk" {
-  description = "Number of ASM RECO Diskgroup"
-}
-
-variable "asm_reco_dg_size" {
-  description = "Size of ASM RECO Diskgroup"
-}
-
 provider "openstack" {
   insecure = true
   version  = "~> 0.3"
 }
 
-#Create and Attach Volumes for ASM DATA Diskgroup
-resource "openstack_blockstorage_volume_v2" "asm_data_volumes" {
-  count = "${var.asm_data_dg_disk}"
-  name = "${var.vm_name}_${format("asm_data-%02d", count.index + 1)}"
-  size =  "${var.asm_data_dg_size}"
-}
-
-resource "openstack_compute_volume_attach_v2" "asm_data_attachments" {
-  count = "${var.asm_data_dg_disk}"
-  instance_id  = "${var.openstack_image_id}"
-  volume_id   = "${openstack_blockstorage_volume_v2.asm_data_volumes.*.id[count.index]}"
-}
-
-#Create and Attach Volumes for ASM RECO Diskgroup
-resource "openstack_blockstorage_volume_v2" "asm_reco_volumes" {
-  count = "${var.asm_reco_dg_disk}"
-  name = "${var.vm_name}_${format("asm_reco-%02d", count.index + 1)}"
-  size =  "${var.asm_reco_dg_size}"
-}
-
-resource "openstack_compute_volume_attach_v2" "asm_reco_attachments" {
-  count = "${var.asm_reco_dg_disk}"
-  instance_id  = "${var.openstack_image_id}"
-  volume_id   = "${openstack_blockstorage_volume_v2.asm_reco_volumes.*.id[count.index]}"
-}
-
-#Create and Attach Volumes for ASM REPO Diskgroup
-resource "openstack_blockstorage_volume_v2" "asm_repo_volumes" {
-  count = 2
-  name = "${var.vm_name}_${format("asm_repo-%02d", count.index + 1)}"
-  size =  10
-}
-
-resource "openstack_compute_volume_attach_v2" "asm_repo_attachments" {
-  count = 2
-  instance_id  = "${var.openstack_image_id}"
-  volume_id   = "${openstack_blockstorage_volume_v2.asm_repo_volumes.*.id[count.index]}"
-}
 
 resource "null_resource" "VMforOracleDB" {
  # Specify the ssh connection
@@ -126,7 +64,6 @@ mkdev -l iocp0
 # make iocp0 persistent
 chdev -l iocp0 -P -a autoconfig='available'
 
-sleep 160
 cfgmgr
 
 echo "search gbs.mop.fr" >> /etc/resolv.conf
