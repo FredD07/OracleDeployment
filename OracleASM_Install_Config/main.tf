@@ -80,6 +80,7 @@ mkdev -l iocp0
 # make iocp0 persistent
 chdev -l iocp0 -P -a autoconfig='available'
 
+sleep 120
 cfgmgr
 
 echo "search gbs.mop.fr" >> /etc/resolv.conf
