@@ -325,5 +325,24 @@
      }
     ] 
     }
+    ],
+  "template_output_params": [  {
+    "name": "ip_address",
+    "label": "ip_address",
+    "description": "ip_address",
+    "secured": false,
+    "hidden": false,
+    "shortname": "",
+    "group_name": "content_template_output"
+  },                             
+    {
+      "name": "vm_instance_id",
+      "label": "VM ID of new LPAR",
+      "description": "VM ID of new LPAR",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    }
     ]
 }
