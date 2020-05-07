@@ -75,15 +75,15 @@ resource "ibm_pi_instance" "pvminstance" {
     pi_volume_ids         = ["${ibm_pi_volume.asm_data_volume.*.volume_id}","${ibm_pi_volume.asm_reco_volume.*.volume_id}","${ibm_pi_volume.asm_repo_volume.*.volume_id}"]
 
     # Specify the ssh connection
-  #connection {
-   #  type        = "ssh"
-   #  host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "externalip")}"
-   #         timeout     = "60m"
-   #         user        = "root"
-   # password = "oracle1bm"
+  connection {
+     type        = "ssh"
+     host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "external_ip")}"
+            timeout     = "60m"
+            user        = "root"
+    password = "oracle1bm"
     #password = "${var.image_id_password}"
    # timeout  = "60m"
-  #}
+  }
   
  # provisioner "remote-exec" {
   #     scripts = [
