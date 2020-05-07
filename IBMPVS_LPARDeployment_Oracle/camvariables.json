@@ -203,28 +203,6 @@
       "group_name": "vm"
     },
     {
-      "name": "migratable",
-      "type": "string",
-      "description": "Can the VM be Migrated",
-      "hidden": true,
-      "label": "Can the VM be Migrated",
-      "secured": false,
-      "options": [
-        {
-          "value": "true",
-          "label": "True",
-          "default": "true"
-        },
-        {
-          "value": "false",
-          "label": "False"
-        }
-      ],
-      "required": true,
-      "immutable": false,
-      "group_name": "vm"
-    },
-    {
       "name": "replication_policy",
       "type": "string",
       "description": "Replication Policy",
