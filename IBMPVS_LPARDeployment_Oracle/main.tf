@@ -75,7 +75,7 @@ resource "ibm_pi_instance" "pvminstance" {
     pi_volume_ids         = ["${ibm_pi_volume.asm_data_volume.*.volume_id}","${ibm_pi_volume.asm_reco_volume.*.volume_id}","${ibm_pi_volume.asm_repo_volume.*.volume_id}"]
 
     # Specify the ssh connection
-  connection {
+  #connection {
    #  type        = "ssh"
    #  host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "externalip")}"
    #         timeout     = "60m"
