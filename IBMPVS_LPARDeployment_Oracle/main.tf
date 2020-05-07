@@ -76,14 +76,14 @@ resource "ibm_pi_instance" "pvminstance" {
 
     # Specify the ssh connection
   connection {
-     type        = "ssh"
-     host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "externalip")}"
-            timeout     = "60m"
-            user        = "root"
-    password = "oracle1bm"
+   #  type        = "ssh"
+   #  host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "externalip")}"
+   #         timeout     = "60m"
+   #         user        = "root"
+   # password = "oracle1bm"
     #password = "${var.image_id_password}"
-    timeout  = "60m"
-  }
+   # timeout  = "60m"
+  #}
   
   provisioner "remote-exec" {
        scripts = [
