@@ -79,7 +79,7 @@ provisioner "remote-exec" {
   connection {
     user     = "${var.image_id_username}"
     password = "${var.image_id_password}"
-    timeout  = "10m"
+    timeout  = "60m"
   }
 }
 
