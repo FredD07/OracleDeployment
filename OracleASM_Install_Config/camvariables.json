@@ -73,6 +73,28 @@
      }
     ] 
     },
+ {
+     "name":    "location",
+     "type": "string",
+     "label": "Oracle SW Location",
+     "description": "Location of Oracle SW for download .ie NFS Server or IBM COS",
+     "hidden": false,
+     "secured": false,
+     "required": true,
+     "immutable": false,
+     "group_name": "ASMDetails",
+      "options": [ 
+    {    
+      "value": "NFS Server",
+      "label": "NFS Server",
+      "default": "true" 
+     },  
+     {    
+      "value": "IBM COS",  
+      "label": "IBM COS"  
+     }
+    ] 
+    },
     {
       "name":  "asm_home",
       "type": "string",
