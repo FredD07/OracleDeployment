@@ -53,6 +53,10 @@ variable "asm_reco_dg_size" {
   description = "Size of ASM RECO Diskgroup"
 }
 
+variable "location" {
+  description = "Location of Oracle SW Location for download .ie NFS Server or IBM Cloud Object Storage"
+}
+
 provider "openstack" {
   insecure = true
   version  = "~> 0.3"
@@ -83,8 +87,7 @@ chdev -l iocp0 -P -a autoconfig='available'
 sleep 20
 cfgmgr
 
-echo "search gbs.mop.fr" >> /etc/resolv.conf
-echo "nameserver 10.7.33.1" >> /etc/resolv.conf
+echo "nameserver 10.11.5.1" >> /etc/resolv.conf
 
 IPADDR=`ifconfig -a|awk '/inet 127/ {next;}
                 /inet / {print $2}'`
@@ -178,9 +181,23 @@ if [ ! -d "$asm_home" ]; then
  chown -R grid:oinstall $oracle_inventory
 fi
 
-#Mount Oracle Binaries FileSystems
-nfso -o nfs_use_reserved_ports=1
-mount 10.7.33.2:/export/Oracle/ /stage
+#
+if [ "${var.asm_home}" = "NFS Server" ]; then
+	#Mount Oracle Binaries FileSystems
+	nfso -o nfs_use_reserved_ports=1
+	mount 10.7.33.2:/export/Oracle/ /stage
+	su - grid <<EOR
+	cd $asm_home
+	unzip -oq /stage/grid/$version/*.zip
+EOR
+else
+	echo "Downloading Oracle Software from IBM Cloud Object Storage"
+	aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 sync s3://bucket-orademo/grid/$version/*.zip  $asm_home
+	su - grid <<EOR
+	cd $asm_home
+	unzip -oq *.zip
+EOR
+fi
 
 #Installation Grid Infrastructure Binaries
 chmod 644 /etc/vfs
@@ -189,9 +206,6 @@ su - grid <<EOT
 echo "export ORACLE_HOME=$asm_home" >> .profile
 echo "export ORACLE_SID=+ASM" >> .profile
 . .profile
-
-cd $asm_home
-unzip -oq /stage/grid/$version/*.zip
 
 echo "ASM REPO Diskgroup Disk List :  $LIST"
 
@@ -231,7 +245,9 @@ quit
 !!!
 EOT
 
+if [ "${var.asm_home}" = "NFS Server" ]; then
 umount /stage
+fi
 
 EOF
 
