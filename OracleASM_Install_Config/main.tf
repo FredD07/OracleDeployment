@@ -182,7 +182,7 @@ if [ ! -d "$asm_home" ]; then
 fi
 
 #
-if [ "${var.asm_home}" = "NFS Server" ]; then
+if [ "${var.location}" = "NFS Server" ]; then
 	#Mount Oracle Binaries FileSystems
 	nfso -o nfs_use_reserved_ports=1
 	mount 10.7.33.2:/export/Oracle/ /stage
@@ -192,7 +192,7 @@ if [ "${var.asm_home}" = "NFS Server" ]; then
 EOR
 else
 	echo "Downloading Oracle Software from IBM Cloud Object Storage"
-	aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 sync s3://bucket-orademo/grid/$version/*.zip  $asm_home
+	aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 sync s3://bucket-orademo/grid/${var.asm_version}/*.zip  $asm_home
 	su - grid <<EOR
 	cd $asm_home
 	unzip -oq *.zip
