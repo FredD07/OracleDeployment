@@ -27,6 +27,9 @@ variable "image_id_password" {
   description = "The password of the username to SSH into image ID"
 }
 
+variable "location" {
+  description = "Location of Oracle SW Location for download .ie NFS Server or IBM Cloud Object Storage"
+}
 
 #Variable : Oracle Database Details for Installation 
 variable "db_version" {
@@ -82,9 +85,27 @@ fi
 
 chown oracle:oinstall /u01/app/oraInventory
 
-#Mount Oracle Binaries FileSystems
-nfso -o nfs_use_reserved_ports=1 
-mount 10.7.33.2:/export/Oracle/ /stage
+if [ "${var.location}" = "NFS Server" ]; then
+	#Mount Oracle Binaries FileSystems
+	nfso -o nfs_use_reserved_ports=1
+	mount 10.7.33.2:/export/Oracle/ /stage
+	su - oracle <<EOR
+	cd $oracle_home
+	unzip -oq /stage/grid/$version/*.zip
+EOR
+else
+        echo "Downloading Oracle Software from IBM Cloud Object Storage"
+        for i in `/opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 ls s3://bucket-orademo/database/19c/  | tr -s ' ' | cut -d ' ' -f4- | grep "\.zip$"`
+        do
+        echo " aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 sync s3://bucket-orademo/database/19c/$i  $oracle_home"
+        /opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 cp  s3://bucket-orademo/database/19c/$i  $oracle_home
+        done
+        su - oracle <<EOR
+        cd $oracle_home
+        unzip -oq *.zip
+EOR
+fi
+
 
 #Installation Binaire Oracle Database
 
@@ -120,7 +141,9 @@ EOG
 EOT
 $oracle_home/root.sh
 
+if [ "${var.asm_home}" = "NFS Server" ]; then
 umount /stage
+fi
 
 EOF
 }
