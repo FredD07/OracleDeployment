@@ -212,7 +212,7 @@ echo "export ORACLE_SID=+ASM" >> .profile
 . .profile
 
 echo "ASM REPO Diskgroup Disk List :  $LIST"
-
+cd $asm_home
 ./gridSetup.sh -ignorePrereq  -force -waitforcompletion -silent                         \
     -responseFile $asm_home/install/response/gridsetup.rsp               \
 INVENTORY_LOCATION=$oracle_inventory                                   \
