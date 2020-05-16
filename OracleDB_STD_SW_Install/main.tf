@@ -91,10 +91,11 @@ if [ "${var.location}" = "NFS Server" ]; then
 	mount 10.7.33.2:/export/Oracle/ /stage
 	su - oracle <<EOR
 	cd $oracle_home
-	unzip -oq /stage/grid/$version/*.zip
+	unzip -oq /stage/database/$version/*.zip
 EOR
 else
         echo "Downloading Oracle Software from IBM Cloud Object Storage"
+	COSDate=`/opt/freeware/bin/date -u  +"%m%d%H%M" -d "$(curl -I 'https://s3.eu-de.cloud-object-storage.appdomain.cloud/' 2>/dev/null | grep -i '^date:' | sed 's/^[Dd]ate: //g')"`; date -n -u $COSDate;
         for i in `/opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 ls s3://bucket-orademo/database/19c/  | tr -s ' ' | cut -d ' ' -f4- | grep "\.zip$"`
         do
         echo " aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 sync s3://bucket-orademo/database/19c/$i  $oracle_home"
@@ -119,7 +120,6 @@ echo "export PATH=$oracle_home/bin:\$PATH" >> .profile
 ##################
 
 cd $oracle_home
-unzip -oq /stage/database/$version/*.zip
 
 ./runInstaller -ignorePrereq  -force -waitforcompletion -silent                        \
     -responseFile $oracle_home/install/response/db_install.rsp               \
