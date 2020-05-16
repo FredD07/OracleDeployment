@@ -141,7 +141,7 @@ EOG
 EOT
 $oracle_home/root.sh
 
-if [ "${var.asm_home}" = "NFS Server" ]; then
+if [ "${var.location}" = "NFS Server" ]; then
 umount /stage
 fi
 
