@@ -1,0 +1,61 @@
+
+<center>
+	<h2>Accessing your environment with OpenVPN</h2>
+</center>
+<p>
+To access your environment, a set of OpenVPN certificates has been generated and attached to this mail.<br/>
+Those OpenVPN certificates are valid for 364 days.<br/>
+</p>
+<ol>
+	<li><b>General</b>
+		<ul>
+			<li>You must be sure that your firewall is accepting outgoing
+connections to the following IP Addresses/ports for the Openvpn connection :<br/>
+				<ul>
+					<li>Subnet : 129.35.171.0/24</li>
+					<li>Ports : 1194 and 1195</li>
+					<li>Protocols : TCP and UDP</li>
+				</ul>
+			</li>
+			<li>Each ZIP file contains an individual certificat. It is not allowed (and not possible) to use the same certificat at the same time from 2 differents machines.</li>
+			<li>If ever you are using another VPN Client (ATT, Cisco AnyConnect), please disconnect before starting the OpenVPN Client, then reconnect to the other VPN</li>
+		</ul>
+	</li>
+	<br/>
+	<li><b>Connect using a Windows Workstation</b>
+		<ul>
+			<li>Download OpenVPN client from <a href="https://openvpn.net/index.php/download/community-downloads.html">this page</a> (Version >= 2.4)</li>
+			<li>Install the OpenVPN client</li>
+			<li>Unzip one of the attached zip file and copy the *.ovpn file (ex: ProjectName_xxxxx_01.psscopenvpn.ovpn) to #OpenVPNInstallDirectory#\config</li>
+			<li>Start the OpenVPN Client as Administrator.<br/>
+				This permission is required because OpenVPN needs to add routes on your machine during the connection. If you don't have admin access, please take a look to the following how-to article:<br/>
+				<a href="http://openvpn.se/files/howto/openvpn-howto_run_openvpn_as_nonadmin.html">http://openvpn.se/files/howto/openvpn-howto_run_openvpn_as_nonadmin.html</a>
+			</li>
+			<li>Right-click on the OpenVPN icon in the taskbar and connect. The icon should turn green if everything is fine.</li>
+		</ul>
+	</li>
+	<br/>
+	<li><b>Connect using a Mac Workstation</b>
+		<ul>
+			<li>Download and install an OpenVPN client for MacOSX, like <a href="https://tunnelblick.net/">Tunnelblick</a></li>
+			<li>For more detailed information, please refer to this page: <a href="https://openvpn.net/index.php/access-server/docs/admin-guides/183-how-to-connect-to-access-server-from-a-mac.html">https://openvpn.net/index.php/access-server/docs/admin-guides/183-how-to-connect-to-access-server-from-a-mac.html</a> </li>
+		</ul>
+	</li>
+	<br/>
+	<li><b>Connect using a Linux Workstation</b>
+		<ul>
+			<li>Install the OpenVPN client using the OS package manager:
+				<ul>
+					<li>CentOS/RHEL : yum install openvpn</li>
+					<li>Ubuntu/Debian : apt-get install openvpn</li>
+				</ul>
+			</li>
+			<li>Unzip one of the attached zip file. You will get a *.ovpn file (ex: ProjectName_xxxxx_01.psscopenvpn.ovpn)</li>
+			<li>Start the openVPN client:
+				<ul>
+					<li>openvpn --config #PATH_TO_CERTIFICATE#/ProjectName_xxxxx_01.psscopenvpn.ovpn</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ol>
