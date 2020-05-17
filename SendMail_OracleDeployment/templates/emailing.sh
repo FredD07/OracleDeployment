@@ -46,7 +46,7 @@ function addFile {
 ">> $temp_mail
 }
 
-if [ $# -ne 10 ]
+if [ $# -ne 9 ]
 then
 	echo "Usage: emailing.sh mail_addresses server_ip user_name user_password asm_home oracle_home asm_password db_password db_sid"
 	exit 1
