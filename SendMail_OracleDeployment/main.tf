@@ -67,11 +67,23 @@ resource "null_resource" "SendeMailforOracleVM" {
     timeout  = "45m"
   }
   
-  # remote execution of the script  
+  provisioner "file" {
+    source      = "templates"
+    destination = "/tmp/templates"
+  }
+  
   provisioner "remote-exec" {
-    inline = [
-      "bash /home/GBS-Digital-Platform/automation/mail/emailing.sh \"${var.vm_recipient_email_address}\" ${var.vm_ipaddress_to_ssh_to} ${var.vm_service_name} ${var.vm_HANA_backup_to_use} ${var.vm_isNatted}",
+       inline = [
+      "bash -c 'chmod +x /tmp/PrepareASMDisk.sh'",
+      "bash -c '/tmp/templates/emailing.sh \"${var.vm_recipient_email_address}\" ${var.vm_ipaddress_to_ssh_to} ${var.user} ${var.user_password} ${var.asm_home} ${var.oracle_home} ${var.asm_password} ${var.db_password} ${var.db_sid}'"
     ]
+    
+  # remote execution of the script  
+  #provisioner "remote-exec" {
+   # inline = [
+    #  "bash /home/GBS-Digital-Platform/automation/mail/emailing.sh \"${var.vm_recipient_email_address}\" ${var.vm_ipaddress_to_ssh_to} ${var.user} ${var.user_password} ${var.asm_home} ${var.oracle_home} ${var.asm_password} ${var.db_password} ${var.db_sid}",
+    #]
+    
   }
  
 }
