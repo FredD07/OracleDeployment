@@ -97,7 +97,7 @@ cat $TEMPLATE_FOOTER >> $temp_template
 
 log "Replace <PLACEHOLDER> by values in the template"
 log "	Replace <SERVICE>"
-sed "s|<SERVICE>|${service}|g" $temp_template > $temp_templated
+sed "s|<SERVICE>|${db_sid}|g" $temp_template > $temp_templated
 log "	Replace <HANABACKUP>"
 sed -i "s|<HANABACKUP>|${hanabackup}|g" $temp_templated
 log "	Replace <IPADDRESS>"
