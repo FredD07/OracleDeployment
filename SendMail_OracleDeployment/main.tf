@@ -59,13 +59,27 @@ variable "db_password" {
 resource "null_resource" "SendeMailforOracleVM" {
 # Specify the connection
 
- connection {
+ #connection {
+ #   type     = "ssh"
+ #   host     = "${var.vm_ipaddress_to_ssh_to}"
+ #   user     = "${var.user}"
+ #   password = "${var.user_password}"
+ #   timeout  = "45m"
+ # }
+  
+  # virtual Machine 
+resource "null_resource" "SendeMailforgdp" {
+  # Specify the connection
+  connection {
     type     = "ssh"
-    host     = "${var.vm_ipaddress_to_ssh_to}"
-    user     = "${var.user}"
-    password = "${var.user_password}"
-    timeout  = "45m"
+    host     = "10.3.44.11"
+    user     = "root"
+    #user     = "root"
+    password = "powerlinux"
+    #password = "mop4gbs"
   }
+
+
   
   provisioner "file" {
     source      = "templates"
