@@ -65,7 +65,7 @@ db_sid=$9
 
 
 
-LOGFILE="/var/log/mail/$db_sid.mail.log"
+LOGFILE="/tmp/$db_sid.mail.log"
 
 log "Mail recipient             : $MAIL_RECIPIENT"
 log "Server IPaddress           : $SERVER_IPADDRESS"
@@ -102,8 +102,6 @@ log "	Replace <HANABACKUP>"
 sed -i "s|<HANABACKUP>|${hanabackup}|g" $temp_templated
 log "	Replace <IPADDRESS>"
 sed -i "s|<IPADDRESS>|${SERVER_IPADDRESS}|g" $temp_templated
-log "	Replace <NATIPADDRESS>"
-sed -i "s|<NATIPADDRESS>|${NATIPaddress}|g" $temp_templated
 
 
 ## Prepare the mail
