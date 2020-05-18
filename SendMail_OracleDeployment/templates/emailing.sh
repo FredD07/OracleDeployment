@@ -62,7 +62,7 @@ db_home=$6
 asm_password=$7
 db_password=$8
 db_sid=$9
-service_name=$10
+service_name=${10}
 
 LOGFILE="/tmp/$db_sid.mail.log"
 
@@ -149,3 +149,7 @@ $TEMPLATE_BASE64
 	cat $temp_mail | /usr/sbin/sendmail $recipient
 
 done
+
+rm -rf ${SCRIPT_DIR}/templates
+rm -f ${SCRIPT_DIR}/*.mail.*
+
