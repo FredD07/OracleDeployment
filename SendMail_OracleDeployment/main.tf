@@ -66,7 +66,7 @@ resource "null_resource" "SendeMailforOracleVM" {
  #   password = "${var.user_password}"
  #   timeout  = "45m"
  # }
-  
+  }
   # virtual Machine 
 resource "null_resource" "SendeMailforgdp" {
   # Specify the connection
