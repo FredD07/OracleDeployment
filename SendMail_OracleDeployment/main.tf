@@ -70,7 +70,7 @@ resource "null_resource" "SendeMailforVMOracle" {
 
   provisioner "file" {
     source      = "templates"
-    destination = "/tmp/templates"
+    destination = "/tmp/"
   }
   
   provisioner "remote-exec" {
