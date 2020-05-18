@@ -46,9 +46,9 @@ function addFile {
 ">> $temp_mail
 }
 
-if [ $# -ne 9 ]
+if [ $# -ne 10 ]
 then
-	echo "Usage: emailing.sh mail_addresses server_ip user_name user_password asm_home oracle_home asm_password db_password db_sid"
+	echo "Usage: emailing.sh mail_addresses server_ip user_name user_password asm_home oracle_home asm_password db_password db_sid service_name"
 	exit 1
 fi
 
@@ -62,8 +62,7 @@ db_home=$6
 asm_password=$7
 db_password=$8
 db_sid=$9
-
-
+service_name=$10
 
 LOGFILE="/tmp/$db_sid.mail.log"
 
@@ -76,6 +75,7 @@ log "ASM Instance Password      : $asm_password"
 log "Oracle Database Home       : $db_home"
 log "Database SID	          : $db_sid"
 log "Database Instance Password : $db_password"
+log "Service Name : $service_name"
 
 temp_template="/tmp/mail.$db_sid.$RANDOM.html"
 temp_templated="/tmp/mail.$db_sid.applied.$RANDOM.html"
@@ -97,16 +97,27 @@ cat $TEMPLATE_FOOTER >> $temp_template
 
 log "Replace <PLACEHOLDER> by values in the template"
 log "	Replace <SERVICE>"
-sed "s|<SERVICE>|${db_sid}|g" $temp_template > $temp_templated
-log "	Replace <HANABACKUP>"
-sed -i "s|<HANABACKUP>|${hanabackup}|g" $temp_templated
+sed "s|<SERVICE>|${service_name}|g" $temp_template > $temp_templated
+log "	Replace <USER>"
+sed -i "s|<USER>|${user}|g" $temp_templated
+log "	Replace <USER_PASSWORD>"
+sed -i "s|<USER_PASSWORD>|${password}|g" $temp_templated
 log "	Replace <IPADDRESS>"
 sed -i "s|<IPADDRESS>|${SERVER_IPADDRESS}|g" $temp_templated
-
+log "	Replace <ASM_PATH>"
+sed -i "s|<ASM_PATH>|${asm_home}|g" $temp_templated
+log "	Replace <AASM_PASSWORD>"
+sed -i "s|<ASM_PASSWORD>|${asm_password}|g" $temp_templated
+log "	Replace <DB_PATH>"
+sed -i "s|<DB_PATH>|${db_home}|g" $temp_templated
+log "	Replace <DB_SID>"
+sed -i "s|<DB_SID>|${db_sid}|g" $temp_templated
+log "	Replace <DB_PASSWORD>"
+sed -i "s|<DB_PASSWORD>|${db_password}|g" $temp_templated
 
 ## Prepare the mail
-MAIL_FROM='IBM Oracle Center - IBM Client Center MONTPELLIER <no-reply@ioc.fr.com>'
-MAIL_SUBJECT="Deployment of Oracel Database ${db_sid} is done"
+MAIL_FROM='IBM Oracle Center - IBM Client Center MONTPELLIER <no-reply@ioc.fr.ibm.com>'
+MAIL_SUBJECT="Deployment of Oracle Database ${db_sid} is done"
 addFile $TEMPLATES_DIR/new_banner.png 1
 
 for recipient in ${MAIL_RECIPIENT//,/ }
