@@ -94,6 +94,16 @@
       "secured": false,
       "required": false,
       "immutable": false
+    },
+    {
+      "name": "service_name",
+      "type": "string",
+      "description": "Service Name",
+      "hidden": false,
+      "label": "Service Name",
+      "secured": false,
+      "required": false,
+      "immutable": false
     }
     ]
 

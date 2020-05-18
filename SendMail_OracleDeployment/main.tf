@@ -70,13 +70,13 @@ resource "null_resource" "SendeMailforVMOracle" {
 
   provisioner "file" {
     source      = "templates"
-    destination = "/tmp/templates"
+    destination = "/tmp/"
   }
   
   provisioner "remote-exec" {
        inline = [
       "bash -c 'chmod +x /tmp/templates/emailing.sh'",
-      "bash -c '/tmp/templates/emailing.sh ${var.vm_recipient_email_address} ${var.vm_ipaddress_to_ssh_to} ${var.user} ${var.user_password} ${var.asm_home} ${var.oracle_home} ${var.asm_password} ${var.db_password} ${var.db_sid} ${var.service_name}'"
+      "bash -c '/tmp/templates/emailing.sh ${var.vm_recipient_email_address} ${var.vm_ipaddress_to_ssh_to} ${var.user} ${var.user_password} ${var.asm_home} ${var.oracle_home} ${var.asm_password} ${var.db_password} ${var.db_sid} \"${var.service_name}\"'"
     ]
     
   }
