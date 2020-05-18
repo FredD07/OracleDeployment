@@ -55,32 +55,16 @@ variable "db_password" {
 }   
  
      
-# virtual Machine 
-resource "null_resource" "SendeMailforOracleVM" {
-# Specify the connection
-
- #connection {
- #   type     = "ssh"
- #   host     = "${var.vm_ipaddress_to_ssh_to}"
- #   user     = "${var.user}"
- #   password = "${var.user_password}"
- #   timeout  = "45m"
- # }
-  }
-  # virtual Machine 
-resource "null_resource" "SendeMailforgdp" {
+ # virtual Machine 
+resource "null_resource" "SendeMailforVMOracle" {
   # Specify the connection
   connection {
     type     = "ssh"
     host     = "10.3.44.11"
     user     = "root"
-    #user     = "root"
     password = "powerlinux"
-    #password = "mop4gbs"
   }
 
-
-  
   provisioner "file" {
     source      = "templates"
     destination = "/tmp/templates"
@@ -91,12 +75,6 @@ resource "null_resource" "SendeMailforgdp" {
       "bash -c 'chmod +x /tmp/templates/emailing.sh'",
       "bash -c '/tmp/templates/emailing.sh ${var.vm_recipient_email_address} ${var.vm_ipaddress_to_ssh_to} ${var.user} ${var.user_password} ${var.asm_home} ${var.oracle_home} ${var.asm_password} ${var.db_password} ${var.db_sid}'"
     ]
-    
-  # remote execution of the script  
-  #provisioner "remote-exec" {
-   # inline = [
-    #  "bash /home/GBS-Digital-Platform/automation/mail/emailing.sh \"${var.vm_recipient_email_address}\" ${var.vm_ipaddress_to_ssh_to} ${var.user} ${var.user_password} ${var.asm_home} ${var.oracle_home} ${var.asm_password} ${var.db_password} ${var.db_sid}",
-    #]
     
   }
  
