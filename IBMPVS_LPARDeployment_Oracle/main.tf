@@ -85,10 +85,5 @@ resource "ibm_pi_instance" "pvminstance" {
    # timeout  = "60m"
   }
   
- # provisioner "remote-exec" {
-  #     scripts = [
-   #         "scripts/wait_for_vm.sh",
-   #     ]
-#}
-  }
+}
 
