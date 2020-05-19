@@ -34,7 +34,7 @@ resource "ibm_pi_volume" "asm_repo_volume"{
   count = "2"
   pi_volume_size       = "10"
   pi_volume_name       = "${var.vm_name}_${format("asm_repo-%02d", count.index + 1)}"
-  pi_volume_type       = "tier1"
+  pi_volume_type       = "tier3"
   pi_volume_shareable  = false
   pi_cloud_instance_id = "${var.power_instance_id}"
 }
