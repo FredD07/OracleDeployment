@@ -66,7 +66,8 @@ resource "ibm_pi_instance" "pvminstance" {
 #    pi_migratable         = "${var.migratable}"
     pi_image_id           = "${data.ibm_pi_image.power_images.id}"
     pi_network_ids        = ["${data.ibm_pi_network.power_networks.*.id}"]
-    pi_key_pair_name      = "${var.ssh_key_name}"
+    pi_pin_policy         = "hard"
+#  pi_key_pair_name      = "${var.ssh_key_name}"
     pi_sys_type           = "${var.system_type}"
     pi_replication_policy = "${var.replication_policy}"
     pi_replication_scheme = "${var.replication_scheme}"
