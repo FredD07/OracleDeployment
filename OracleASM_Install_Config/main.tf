@@ -63,7 +63,16 @@ provider "openstack" {
 }
 
 
-
+	 resource "null_resource" "VMforOracleDB" {
+ # Specify the ssh connection
+  connection {
+    type     = "ssh"
+    host     = "${var.vm_ip_address}"
+    user     = "${var.image_id_username}"
+    password = "${var.image_id_password}"
+    agent = false
+    timeout  = "45m"
+  }
 
   
  provisioner "file" {
@@ -249,16 +258,7 @@ fi
 
 EOF
 
-	 resource "null_resource" "VMforOracleDB" {
- # Specify the ssh connection
-  connection {
-    type     = "ssh"
-    host     = "${var.vm_ip_address}"
-    user     = "${var.image_id_username}"
-    password = "${var.image_id_password}"
-    agent = false
-    timeout  = "45m"
-  }
+
 		 
 }
 
