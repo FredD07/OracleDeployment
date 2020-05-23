@@ -15,6 +15,7 @@ output "asm_reco_volumes" {
 }
 
 output "ip_address" {
-    value = "${ibm_pi_instance.pvminstance.addresses}"
+    #value = "${ibm_pi_instance.pvminstance.addresses}"
+   value = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "external_ip")}"
 }
 
