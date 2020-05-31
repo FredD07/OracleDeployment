@@ -51,6 +51,8 @@ data "ibm_pi_network" "power_networks" {
     count                = "${length(var.networks)}"
     pi_network_name      = "${var.networks[count.index]}"
     pi_cloud_instance_id = "${var.power_instance_id}"
+  pi_network_type      = "pub-vlan"
+  pi_dns               = "9.9.9.9"
 }
 
 data "ibm_pi_image" "power_images" {
