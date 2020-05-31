@@ -61,7 +61,7 @@ resource "ibm_pi_network" "power_networks" {
     pi_network_name      = "pub_network${var.vm_name}"
     pi_cloud_instance_id = "${var.power_instance_id}"
   pi_network_type      = "pub-vlan"
-  pi_dns               = "9.9.9.9"
+  pi_dns               = ["9.9.9.9"]
 }
 
 data "ibm_pi_image" "power_images" {
