@@ -52,7 +52,7 @@ data "ibm_pi_volume" "ds_asm_repo_volume" {
 #    pi_network_name      = "${var.networks[count.index]}"
 #    pi_cloud_instance_id = "${var.power_instance_id}"
 #  pi_network_type      = "pub-vlan"
-#  pi_dns               = "9.9.9.9"
+#  pi_dns               = ["9.9.9.9"]
 #}
 
 #create public network
