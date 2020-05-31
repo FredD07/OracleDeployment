@@ -56,7 +56,7 @@ data "ibm_pi_volume" "ds_asm_repo_volume" {
 #}
 
 #create public network
-data "ibm_pi_network" "power_networks" {
+resource "ibm_pi_network" "power_networks" {
     count                = "1"
     pi_network_name      = "pub_network${var.vm_name}"
     pi_cloud_instance_id = "${var.power_instance_id}"
