@@ -65,7 +65,7 @@ resource "ibm_pi_network" "power_networks" {
 }
 
 data "ibm_pi_network" "ds_power_networks" {
-  depends_on           = ["ibm_pi_network.power_networks"]
+ # depends_on           = ["ibm_pi_network.power_networks"]
   count = "1"
   pi_cloud_instance_id = "${var.power_instance_id}"
   pi_network_name      = "pub_network${var.vm_name}"
