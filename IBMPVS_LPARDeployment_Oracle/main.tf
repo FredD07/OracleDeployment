@@ -46,10 +46,19 @@ data "ibm_pi_volume" "ds_asm_repo_volume" {
   pi_volume_name      = "${var.vm_name}_${format("asm_repo-%02d", count.index + 1)}"
 }
 
+#create private network list
+#data "ibm_pi_network" "power_networks" {
+#    count                = "${length(var.networks)}"
+#    pi_network_name      = "${var.networks[count.index]}"
+#    pi_cloud_instance_id = "${var.power_instance_id}"
+#  pi_network_type      = "pub-vlan"
+#  pi_dns               = "9.9.9.9"
+#}
 
+#create public network
 data "ibm_pi_network" "power_networks" {
-    count                = "${length(var.networks)}"
-    pi_network_name      = "${var.networks[count.index]}"
+    count                = "1"
+    pi_network_name      = "pub_network${var.vm_name}"
     pi_cloud_instance_id = "${var.power_instance_id}"
   pi_network_type      = "pub-vlan"
   pi_dns               = "9.9.9.9"
