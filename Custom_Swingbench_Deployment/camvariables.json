@@ -3,12 +3,16 @@
   "output_datatype": "content_template_output",
   "input_groups": [
     {
-      "name": "virtualmachine",
-      "label": "Virtual Machine Input Variables"
+      "name": "DBTier",
+      "label": "DB Virtual Machine Input Variables"
     },
     {
-      "name": "ASMDetails",
-      "label": "Oracle ASM Details"
+      "name": "AppsTier",
+      "label": "Apps Virtual Machine Input Variables"
+    },
+   {
+      "name": "VM",
+      "label": "Virtual Machine Input Variables"
     }
   ],
   "output_groups": [
@@ -19,61 +23,72 @@
   ],
   "template_input_params": [
     {
-      "name": "vm_ip_address",
+      "name": "vm_db_ip_address",
       "type": "string",
-      "description": "IP Address of the server to connect",
+      "description": "IP Address of the DB server to connect",
       "hidden": false,
-      "label": "AIX LPAR IP address",
+      "label": "DB Server - External IP ",
       "secured": false,
       "required": true,
       "immutable": false,
-      "group_name": "virtualmachine"
+      "group_name": "DBTier"
+    },
+    {
+      "name": "vm_db_ip_int_address",
+      "type": "string",
+      "description": "IP Address of the DB server to connect",
+      "hidden": false,
+      "label": "DB Server - Internal IP ",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "DBTier"
+    },
+ {
+      "name": "vm_apps_ip_address",
+      "type": "string",
+      "description": "IP Address of the APPS server to connect",
+      "hidden": false,
+      "label": "APPS Server - External IP ",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "AppsTier"
+    },
+    {
+      "name": "vm_apps_ip_int_address",
+      "type": "string",
+      "description": "IP Address of the APPS server to connect",
+      "hidden": false,
+      "label": "APPS Server - Internal IP ",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "AppsTier"
     },
     {
       "name":  "image_id_username",
       "type": "string",
       "description": "The username to SSH into AIX LPAR",
-      "hidden": false,
+      "hidden": true,
       "label": "Username to SSH",
       "secured": false,
       "required": true,
       "immutable": false,
-      "group_name": "virtualmachine"
+      "group_name": "VM"
     },
     {
       "name":  "image_id_password",
       "type": "password",
       "description": "The password of the username to SSH into AIX LPAR",
-      "hidden": false,
+      "hidden": true,
       "label": "User Password to SSH",
       "secured": true,
       "required": true,
       "immutable": false,
-      "group_name": "virtualmachine"
+      "group_name": "VM"
     },
-      {
-     "name":    "asm_version",
-     "type": "string",
-     "label": "Database Version",
-     "description": "Database Version to Install on AIX LPAR",
-     "hidden": false,
-     "secured": false,
-     "required": true,
-     "immutable": false,
-     "group_name": "ASMDetails",
-      "options": [ 
-    {    
-      "value": "19c",
-      "label": "19c",
-      "default": "true" 
-     },  
-     {    
-      "value": "18c",  
-      "label": "18c"  
-     }
-    ] 
-    },
- {
+    {
      "name":    "location",
      "type": "string",
      "label": "Oracle SW Location",
@@ -82,7 +97,7 @@
      "secured": false,
      "required": true,
      "immutable": false,
-     "group_name": "ASMDetails",
+     "group_name": "VM",
       "options": [ 
     {    
       "value": "NFS Server",
@@ -93,74 +108,5 @@
       "value": "IBM COS",  
       "label": "IBM COS"  
      }
-    ] 
-    },
-    {
-      "name":  "asm_home",
-      "type": "string",
-      "description": "Oracle Home Path to Install Oracle GridInfrastructure/ASM Binaries",
-      "hidden": false,
-      "label": "ASM Oracle HOME Path",
-      "default": "/u01/oracle/db_version/grid",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    },
-    {
-      "name":  "asm_password",
-      "type": "string",
-      "description": "ASM Instance Password",
-      "hidden": false,
-      "label": "ASM Instance Password",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    },
-    {
-      "name":  "asm_data_dg_disk",
-      "type": "string",
-      "description": "Number of ASM Data Diskgroup ",
-      "hidden": false,
-      "label": "Number of ASM Data Diskgroup",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    },
-    {
-      "name":  "asm_data_dg_size",
-      "type": "string",
-      "description": "Size of ASM Data Diskgroup ",
-      "hidden": false,
-      "label": "Size of ASM Data Diskgroup (GB)",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    },
-     {
-      "name":  "asm_reco_dg_disk",
-      "type": "string",
-      "description": "Number of ASM Reco Diskgroup ",
-      "hidden": false,
-      "label": "Number of ASM RECO Diskgroup",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    },
-    {
-      "name":  "asm_reco_dg_size",
-      "type": "string",
-      "description": "Size of ASM RECO Diskgroup ",
-      "hidden": false,
-      "label": "Size of ASM RECO Diskgroup (GB)",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "ASMDetails"
-    }
-    ]
+    ]  
 }
