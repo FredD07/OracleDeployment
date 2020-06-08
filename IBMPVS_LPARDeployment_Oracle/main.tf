@@ -25,13 +25,13 @@ resource "ibm_pi_volume" "asm_reco_volume"{
 
 data "ibm_pi_volume" "ds_asm_reco_volume" {
   depends_on           = ["ibm_pi_volume.asm_reco_volume"]
-count = "${var.asm_reco_dg_disk}"
+  count = "${var.asm_reco_dg_disk}"
   pi_cloud_instance_id = "${var.power_instance_id}"
   pi_volume_name      = "${var.vm_name}_${format("asm_reco-%02d", count.index + 1)}"
 }
 
 resource "ibm_pi_volume" "asm_repo_volume"{
-  count = "2"
+  count = "${var.asm_repo_dg_disk}"
   pi_volume_size       = "10"
   pi_volume_name       = "${var.vm_name}_${format("asm_repo-%02d", count.index + 1)}"
   pi_volume_type       = "tier3"
@@ -41,19 +41,10 @@ resource "ibm_pi_volume" "asm_repo_volume"{
 
 data "ibm_pi_volume" "ds_asm_repo_volume" {
   depends_on           = ["ibm_pi_volume.asm_repo_volume"]
-  count = "2"
+  count = "${var.asm_repo_dg_disk}"
   pi_cloud_instance_id = "${var.power_instance_id}"
   pi_volume_name      = "${var.vm_name}_${format("asm_repo-%02d", count.index + 1)}"
 }
-
-#create private network list
-#data "ibm_pi_network" "power_networks" {
-#    count                = "${length(var.networks)}"
-#    pi_network_name      = "${var.networks[count.index]}"
-#    pi_cloud_instance_id = "${var.power_instance_id}"
-#  pi_network_type      = "pub-vlan"
-#  pi_dns               = ["9.9.9.9"]
-#}
 
 #create public network
 resource "ibm_pi_network" "power_networks" {
@@ -98,11 +89,10 @@ resource "ibm_pi_instance" "pvminstance" {
   connection {
      type        = "ssh"
      host        = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "external_ip")}"
-            timeout     = "60m"
-            user        = "root"
-    password = "oracle1bm"
-    #password = "${var.image_id_password}"
-   # timeout  = "60m"
+     timeout     = "60m"
+     user        = "${var.image_id_username}"
+     password = "${var.image_id_password}"
+
   }
   
 }
