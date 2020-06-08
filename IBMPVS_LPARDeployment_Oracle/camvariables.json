@@ -329,7 +329,7 @@
       "name":  "asm_repo_dg_disk",
       "type": "string",
       "description": "Number of ASM REPO Diskgroup ",
-      "hidden": true,
+      "hidden": false,
       "label": "Number of ASM Data Diskgroup Volumes",
       "secured": false,
       "required": true,
