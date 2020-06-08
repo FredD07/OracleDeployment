@@ -17,6 +17,11 @@ variable "asm_data_dg_disk" {
   default = 2
 }
 
+variable "asm_repo_dg_disk" {
+  description = "Number of ASM REPO Diskgroup"
+  default = 2
+}
+
 variable "asm_data_dg_size" {
   description = "Size of ASM Data Diskgroup"
   default = 10
