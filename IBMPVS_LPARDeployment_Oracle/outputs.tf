@@ -20,5 +20,5 @@ output "ip_address" {
 }
 
 output "int_ip_address" {
-   value = "${ibm_pi_instance.pvminstance.addresses[0]}"
+   value = "${ibm_pi_instance.pvminstance.addresses[0].ip}"
 }
