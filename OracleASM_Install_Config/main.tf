@@ -63,15 +63,17 @@ provider "openstack" {
 }
 
 
-resource "null_resource" "VMforOracleDB" {
+	 resource "null_resource" "VMforOracleDB" {
  # Specify the ssh connection
   connection {
     type     = "ssh"
     host     = "${var.vm_ip_address}"
     user     = "${var.image_id_username}"
     password = "${var.image_id_password}"
+    agent = false
     timeout  = "45m"
   }
+
   
  provisioner "file" {
     destination = "/tmp/PrepareASMDisk.sh"
@@ -87,7 +89,7 @@ chdev -l iocp0 -P -a autoconfig='available'
 sleep 20
 cfgmgr
 
-echo "nameserver 10.11.5.1" >> /etc/resolv.conf
+
 
 IPADDR=`ifconfig -a|awk '/inet 127/ {next;}
                 /inet / {print $2}'`
@@ -183,6 +185,7 @@ fi
 
 #
 if [ "${var.location}" = "NFS Server" ]; then
+	echo "nameserver 10.11.5.1" >> /etc/resolv.conf
 	#Mount Oracle Binaries FileSystems
 	nfso -o nfs_use_reserved_ports=1
 	mount 10.7.33.2:/export/Oracle/ /stage
@@ -191,12 +194,13 @@ if [ "${var.location}" = "NFS Server" ]; then
 	unzip -oq /stage/grid/$version/*.zip
 EOR
 else
+	echo "nameserver 9.9.9.9" >> /etc/resolv.conf
         echo "Downloading Oracle Software from IBM Cloud Object Storage"
 	COSDate=`/opt/freeware/bin/date -u  +"%m%d%H%M" -d "$(curl -I 'https://s3.eu-de.cloud-object-storage.appdomain.cloud/' 2>/dev/null | grep -i '^date:' | sed 's/^[Dd]ate: //g')"`; date -n -u $COSDate;
-        for i in `/opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 ls s3://bucket-orademo/grid/19c/  | tr -s ' ' | cut -d ' ' -f4- | grep "\.zip$"`
+        for i in `/opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 ls s3://bucket-orademo/grid/${var.asm_version}/  | tr -s ' ' | cut -d ' ' -f4- | grep "\.zip$"`
         do
-        echo " aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 sync s3://bucket-orademo/grid/19c/$i  $asm_home"
-        /opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 cp  s3://bucket-orademo/grid/19c/$i  $asm_home
+        echo " aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 cp s3://bucket-orademo/grid/${var.asm_version}/$i  $asm_home"
+        /opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 cp  s3://bucket-orademo/grid/${var.asm_version}/$i  $asm_home
         done
         su - grid <<EOR
         cd $asm_home
@@ -256,8 +260,11 @@ fi
 
 EOF
 
+
+		 
 }
 
+	
   # Execute the script remotely
   provisioner "remote-exec" {
     inline = [

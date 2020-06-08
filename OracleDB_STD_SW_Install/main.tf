@@ -85,6 +85,7 @@ fi
 
 chown oracle:oinstall /u01/app/oraInventory
 
+
 if [ "${var.location}" = "NFS Server" ]; then
 	#Mount Oracle Binaries FileSystems
 	nfso -o nfs_use_reserved_ports=1
@@ -96,10 +97,10 @@ EOR
 else
         echo "Downloading Oracle Software from IBM Cloud Object Storage"
 	COSDate=`/opt/freeware/bin/date -u  +"%m%d%H%M" -d "$(curl -I 'https://s3.eu-de.cloud-object-storage.appdomain.cloud/' 2>/dev/null | grep -i '^date:' | sed 's/^[Dd]ate: //g')"`; date -n -u $COSDate;
-        for i in `/opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 ls s3://bucket-orademo/database/19c/  | tr -s ' ' | cut -d ' ' -f4- | grep "\.zip$"`
+        for i in `/opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 ls s3://bucket-orademo/database/${var.db_version}/  | tr -s ' ' | cut -d ' ' -f4- | grep "\.zip$"`
         do
-        echo " aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 sync s3://bucket-orademo/database/19c/$i  $oracle_home"
-        /opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 cp  s3://bucket-orademo/database/19c/$i  $oracle_home
+        echo " aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 sync s3://bucket-orademo/database/${var.db_version}/$i  $oracle_home"
+        /opt/freeware/bin/aws --endpoint-url="https://s3.eu-de.cloud-object-storage.appdomain.cloud" s3 cp  s3://bucket-orademo/database/${var.db_version}/$i  $oracle_home
         done
         su - oracle <<EOR
         cd $oracle_home
