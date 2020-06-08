@@ -354,6 +354,15 @@
       "hidden": false,
       "secured": false,
       "group_name": "content_template_output"
-    }
+    },
+    {
+    "name": "int_ip_address",
+    "label": "int_ip_address",
+    "description": "Internal ip_address",
+    "secured": false,
+    "hidden": false,
+    "shortname": "",
+    "group_name": "content_template_output"
+  }
     ]
 }
