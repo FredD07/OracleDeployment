@@ -19,3 +19,6 @@ output "ip_address" {
    value = "${lookup(ibm_pi_instance.pvminstance.addresses[0], "external_ip")}"
 }
 
+output "int_ip_address" {
+   value = "${ibm_pi_instance.pvminstance.addresses[0]}"
+}
