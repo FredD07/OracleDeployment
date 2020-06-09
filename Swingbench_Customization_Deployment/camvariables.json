@@ -1,0 +1,115 @@
+{
+  "input_datatypes": [],
+  "output_datatype": "content_template_output",
+  "input_groups": [
+    {
+      "name": "DBTier",
+      "label": "DB Virtual Machine Input Variables"
+    },
+    {
+      "name": "AppsTier",
+      "label": "Apps Virtual Machine Input Variables"
+    },
+   {
+      "name": "VM",
+      "label": "Virtual Machine Input Variables"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "vm_db_ip_address",
+      "type": "string",
+      "description": "IP Address of the DB server to connect",
+      "hidden": false,
+      "label": "DB Server - External IP ",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "DBTier"
+    },
+    {
+      "name": "vm_db_ip_int_address",
+      "type": "string",
+      "description": "IP Address of the DB server to connect",
+      "hidden": false,
+      "label": "DB Server - Internal IP ",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "DBTier"
+    },
+ {
+      "name": "vm_apps_ip_address",
+      "type": "string",
+      "description": "IP Address of the APPS server to connect",
+      "hidden": false,
+      "label": "APPS Server - External IP ",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "AppsTier"
+    },
+    {
+      "name": "vm_apps_ip_int_address",
+      "type": "string",
+      "description": "IP Address of the APPS server to connect",
+      "hidden": false,
+      "label": "APPS Server - Internal IP ",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "AppsTier"
+    },
+    {
+      "name":  "image_id_username",
+      "type": "string",
+      "description": "The username to SSH into AIX LPAR",
+      "hidden": false,
+      "label": "Username to SSH",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "VM"
+    },
+    {
+      "name":  "image_id_password",
+      "type": "password",
+      "description": "The password of the username to SSH into AIX LPAR",
+      "hidden": false,
+      "label": "User Password to SSH",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "group_name": "VM"
+    },
+    {
+     "name":    "location",
+     "type": "string",
+     "label": "Oracle SW Location",
+     "description": "Location of Oracle SW for download .ie NFS Server or IBM COS",
+     "hidden": false,
+     "secured": false,
+     "required": true,
+     "immutable": false,
+     "group_name": "VM",
+      "options": [ 
+    {    
+      "value": "NFS Server",
+      "label": "NFS Server",
+      "default": "true" 
+     },  
+     {    
+      "value": "IBM COS",  
+      "label": "IBM COS"  
+     }
+
+    ]  
+}
+]
+}
