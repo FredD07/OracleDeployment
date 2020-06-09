@@ -28,7 +28,7 @@ resource "ibm_pi_instance" "pvminstance" {
     pi_replication_scheme = "${var.replication_scheme}"
     pi_replicants         = "${var.replicants}"
     pi_cloud_instance_id  = "${var.power_instance_id}"
-    pi_volume_ids         = [""]
+    pi_volume_ids         = []
 
     # Specify the ssh connection
   connection {
