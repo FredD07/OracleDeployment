@@ -2,8 +2,8 @@
 
 
 data "ibm_pi_network" "power_networks" {
-    count                = "1"
-    pi_network_name      = "${var.networks}"
+     count                = "${length(var.networks)}"
+    pi_network_name      = "${var.networks[count.index]}"
     pi_cloud_instance_id = "${var.power_instance_id}"
 }
 
