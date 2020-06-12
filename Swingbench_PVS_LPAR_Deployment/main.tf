@@ -40,5 +40,25 @@ resource "ibm_pi_instance" "pvminstance" {
 
   }
   
+     provisioner "file" {
+    destination = "/tmp/ResetRMC.sh"
+    content     = <<EOF
+#!/bin/ksh
+
+/usr/sbin/rsct/bin/rmcctrl -z
+/usr/sbin/rsct/bin/rmcctrl -A
+/usr/sbin/rsct/bin/rmcctrl -p
+
+EOF
+}
+
+  # Execute the script remotely
+  provisioner "remote-exec" {
+    inline = [
+      "bash -c 'chmod +x /tmp/ResetRMC.sh'",
+      "bash -c '/tmp/ResetRMC.sh >> ResetRMC.log 2>&1'"
+    ]
+  }
+     
 }
 
