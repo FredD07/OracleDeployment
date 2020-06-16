@@ -87,7 +87,7 @@ echo "**** Update Swingbench Apps Tier Oracle Client "
 ssh -o "StrictHostKeyChecking no" $HOST_APPS_INT  "/u01/set_env.sh $HOST_DB"
 
 echo "**** Start Oracle Stack (Database, Listener ...)"
-start_db.sh
+./start_db.sh
 
 EOF
 }
