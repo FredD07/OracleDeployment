@@ -42,7 +42,7 @@ variable "swing_home" {
     description = "Path of Swingbench Application"
 }
 
-variable "oralce_home" {
+variable "oracle_home" {
     description = "Path of Oracle Database Home"
 }
 
