@@ -117,7 +117,7 @@ sed -i "s|<DB_PASSWORD>|${db_password}|g" $temp_templated
 
 ## Prepare the mail
 MAIL_FROM='IBM Oracle Center - IBM Client Center MONTPELLIER <no-reply@ioc.fr.ibm.com>'
-MAIL_SUBJECT="Deployment of Oracle Database ${db_sid} is done"
+MAIL_SUBJECT="Swingbench As a Service Deployment is Completed"
 addFile $TEMPLATES_DIR/banner.png 1
 
 for recipient in ${MAIL_RECIPIENT//,/ }
