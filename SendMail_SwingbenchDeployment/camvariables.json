@@ -1,0 +1,110 @@
+{
+  "input_datatypes": [],
+  "output_datatype": "content_template_output",
+  "template_input_params": [ 
+ {
+      "name": "vm_recipient_email_address",
+      "type": "string",
+      "description": "email of the recipent for notification.",
+      "hidden": false,
+      "label": "recipient email address.",
+      "secured": false,
+      "required": true,
+      "immutable": false
+  },
+    
+    {
+      "name": "vm_ipaddress_to_ssh_to",
+      "type": "string",
+      "description": "IP address of the VM deployed.",
+      "hidden": false,
+      "label": "VM deployed IP address.",
+      "secured": false,
+      "required": true,
+      "immutable": false
+    },
+      
+    {
+      "name": "user",
+      "type": "string",
+      "description": "user to connect",
+      "hidden": false,
+      "label": "user to ssh",
+      "secured": false,
+      "required": true,
+      "immutable": false
+     },
+    
+    {
+      "name": "user_password",
+      "type": "string",
+      "description": "User password",
+      "hidden": false,
+      "label": "User Password",
+      "secured": false,
+      "required": true,
+      "immutable": false
+    },
+    {
+      "name": "asm_home",
+      "type": "string",
+      "description": "ASM_HOME",
+      "hidden": false,
+      "label": "Oracle ASM Home Path",
+      "secured": false,
+      "required": false,
+      "immutable": false
+    },
+     {
+      "name": "oracle_home",
+      "type": "string",
+      "description": "Oracle_HOME",
+      "hidden": false,
+      "label": "Oracle Database Home Path",
+      "secured": false,
+      "required": false,
+      "immutable": false
+    },
+    {
+      "name": "asm_password",
+      "type": "string",
+      "description": "ASM Instance Password",
+      "hidden": false,
+      "label": "ASM Instance Password",
+      "secured": false,
+      "required": false,
+      "immutable": false
+    },
+    {
+      "name": "db_sid",
+      "type": "string",
+      "description": "Database SID",
+      "hidden": false,
+      "label": "Database SID",
+      "secured": false,
+      "required": false,
+      "immutable": false
+    },
+    {
+      "name": "db_password",
+      "type": "string",
+      "description": "Database Password",
+      "hidden": false,
+      "label": "Database Password",
+      "secured": false,
+      "required": false,
+      "immutable": false
+    },
+    {
+      "name": "service_name",
+      "type": "string",
+      "description": "Service Name",
+      "hidden": false,
+      "label": "Service Name",
+      "secured": false,
+      "required": false,
+      "immutable": false
+    }
+    ]
+
+}
