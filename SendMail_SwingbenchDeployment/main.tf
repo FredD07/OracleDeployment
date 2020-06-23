@@ -42,7 +42,7 @@ variable "swing_home" {
     description = "Path of Swingbench Application"
 }
 
-variable "db_home" {
+variable "oralce_home" {
     description = "Path of Oracle Database Home"
 }
 
@@ -76,7 +76,7 @@ resource "null_resource" "SendeMailforVMOracle" {
   provisioner "remote-exec" {
        inline = [
       "bash -c 'chmod +x /tmp/templates/emailing.sh'",
-      "bash -c '/tmp/templates/emailing.sh ${var.vm_recipient_email_address} ${var.vm_db_ipaddress_to_ssh_to} ${var.vm_apps_ipaddress_to_ssh_to} ${var.user} ${var.user_password} ${var.swing_home} ${var.db_home} ${var.db_password} ${var.db_sid} \"${var.service_name}\"'"
+      "bash -c '/tmp/templates/emailing.sh ${var.vm_recipient_email_address} ${var.vm_db_ipaddress_to_ssh_to} ${var.vm_apps_ipaddress_to_ssh_to} ${var.user} ${var.user_password} ${var.swing_home} ${var.oracle_home} ${var.db_password} ${var.db_sid} \"${var.service_name}\"'"
     ]
     
   }
