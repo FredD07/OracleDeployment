@@ -14,11 +14,21 @@
   },
     
     {
-      "name": "vm_ipaddress_to_ssh_to",
+      "name": "vm_db_ipaddress_to_ssh_to",
       "type": "string",
-      "description": "IP address of the VM deployed.",
+      "description": "IP address of the Swingbench Database VM deployed.",
       "hidden": false,
-      "label": "VM deployed IP address.",
+      "label": "DB VM deployed IP address.",
+      "secured": false,
+      "required": true,
+      "immutable": false
+    },
+  {
+      "name": "vm_apps_ipaddress_to_ssh_to",
+      "type": "string",
+      "description": "IP address of the Swingbench Application VM deployed.",
+      "hidden": false,
+      "label": "Apps VM deployed IP address.",
       "secured": false,
       "required": true,
       "immutable": false
@@ -46,11 +56,11 @@
       "immutable": false
     },
     {
-      "name": "asm_home",
+      "name": "swing_home",
       "type": "string",
-      "description": "ASM_HOME",
+      "description": "SWINGBENCH_HOME",
       "hidden": false,
-      "label": "Oracle ASM Home Path",
+      "label": "Swingbench Application Home Path",
       "secured": false,
       "required": false,
       "immutable": false
@@ -61,16 +71,6 @@
       "description": "Oracle_HOME",
       "hidden": false,
       "label": "Oracle Database Home Path",
-      "secured": false,
-      "required": false,
-      "immutable": false
-    },
-    {
-      "name": "asm_password",
-      "type": "string",
-      "description": "ASM Instance Password",
-      "hidden": false,
-      "label": "ASM Instance Password",
       "secured": false,
       "required": false,
       "immutable": false
