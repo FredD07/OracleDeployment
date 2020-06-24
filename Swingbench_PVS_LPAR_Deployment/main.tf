@@ -12,6 +12,13 @@ resource "ibm_pi_network" "power_networks" {
   pi_dns               = ["9.9.9.9"]
 }
 
+data "ibm_pi_network" "ds_power_networks" {
+  depends_on           = ["ibm_pi_network.power_networks"]
+count = "1"
+  pi_cloud_instance_id = "${var.power_instance_id}"
+  pi_network_name      = "${var.vm_name}"
+} 
+
 data "ibm_pi_image" "power_images" {
     pi_image_name        = "${var.image_name}"
     pi_cloud_instance_id = "${var.power_instance_id}"
@@ -24,7 +31,8 @@ resource "ibm_pi_instance" "pvminstance" {
     pi_proc_type          = "${var.proc_type}"
 #    pi_migratable         = "${var.migratable}"
     pi_image_id           = "${data.ibm_pi_image.power_images.id}"
-    pi_network_ids        = ["${data.ibm_pi_network.power_networks.id}"]
+ #   pi_network_ids        = ["${data.ibm_pi_network.power_networks.id}"]
+     pi_network_ids        =   ["${data.ibm_pi_network.ds_power_networks.id}"]
     pi_pin_policy         = "hard"
     pi_key_pair_name      = ""
 #  pi_key_pair_name      = "${var.ssh_key_name}"
