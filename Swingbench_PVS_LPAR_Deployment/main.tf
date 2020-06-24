@@ -6,7 +6,7 @@ resource "ibm_pi_network" "power_networks" {
    count = "${contains(var.networks, var.vm_name) ? 1 : 0 }  "
    #count = "${var.networks==\"${var.vm_name}-db\" ? 1 :0 }"
     # pi_network_name      = "${var.networks[count.index]}"
-     pi_network_name "${var.vm_name}"
+     pi_network_name = "${var.vm_name}"
     pi_cloud_instance_id = "${var.power_instance_id}"
      pi_network_type      = "pub-vlan"
   pi_dns               = ["9.9.9.9"]
