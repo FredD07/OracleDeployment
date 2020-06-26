@@ -58,7 +58,7 @@ variable "shareable" {
 
 variable "networks" {
     description = "List of networks that should be attached to the VM"
-    default     = "publicvlan"
+    default     = ["publicvlan"]
 }
 
 variable "system_type" {
