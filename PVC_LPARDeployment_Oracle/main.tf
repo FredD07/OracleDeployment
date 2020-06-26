@@ -52,6 +52,10 @@ variable "asm_reco_dg_size" {
   description = "Size of ASM RECO Diskgroup"
 }
 
+variable "asm_repo_dg_disk" {
+  description = "Number of ASM REPO Diskgroup"
+}
+
 provider "openstack" {
   insecure = true
   #version  = "~> 0.3"
@@ -111,13 +115,13 @@ resource "openstack_compute_volume_attach_v2" "asm_reco_attachments" {
 
 #Create and Attach Volumes for ASM REPO Diskgroup
 resource "openstack_blockstorage_volume_v2" "asm_repo_volumes" {
-  count = 2
+  count = "${var.asm_repo_dg_disk}"
   name = "${var.ibm_stack_name}_${format("asm_repo-%02d", count.index + 1)}"
   size =  10
 }
 
 resource "openstack_compute_volume_attach_v2" "asm_repo_attachments" {
-  count = 2
+  count = "${var.asm_repo_dg_disk}"
   instance_id  = "${openstack_compute_instance_v2.single-vm.id}"
   volume_id   = "${openstack_blockstorage_volume_v2.asm_repo_volumes.*.id[count.index]}"
 }
