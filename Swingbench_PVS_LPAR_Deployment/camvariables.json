@@ -228,7 +228,7 @@
     },
     {
       "name": "networks",
-      "type": "list",
+      "type": "string",
       "description": "Name of Networks to Attach",
       "hidden": false,
       "label": "Name of Networks to Attach",
