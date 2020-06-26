@@ -3,7 +3,7 @@
 
 resource "ibm_pi_network" "power_networks" {
    #  count                = "${length(var.networks)}"
-   count = "${contains([var.networks], var.vm_name) ? "1" : "0" }"
+   count = "${contains(var.networks, var.vm_name) ? "1" : "0" }"
    #count = "${var.networks == "test" ? 1 : 0"
     # pi_network_name      = "${var.networks[count.index]}"
      pi_network_name = "${var.vm_name}"
@@ -16,7 +16,7 @@ data "ibm_pi_network" "ds_power_networks" {
   depends_on           = ["ibm_pi_network.power_networks"]
 count = "1"
   pi_cloud_instance_id = "${var.power_instance_id}"
-  pi_network_name      = "${var.networks}"
+  pi_network_name      = "${var.networks[0]}"
 } 
 
 data "ibm_pi_image" "power_images" {
