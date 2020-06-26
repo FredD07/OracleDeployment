@@ -163,6 +163,17 @@
       "required": true,
       "immutable": false,
       "group_name": "ASMDetails"
+    },
+     {
+      "name":  "asm_repo_dg_disk",
+      "type": "string",
+      "description": "Number of ASM REPO Diskgroup ",
+      "hidden": false,
+      "label": "Number of ASM RECO Diskgroup",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ASMDetails"
     }
   ],
   "template_output_params": [  {
