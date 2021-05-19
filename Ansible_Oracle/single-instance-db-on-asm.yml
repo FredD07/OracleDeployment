@@ -1,9 +1,0 @@
----
- - name: Database Server Installation & Database Creation
-   hosts: "{{ hostgroup }}"
-   become: yes
-   roles:
-      - oraswdb-install
-      - oradb-manage-db
-
- 
